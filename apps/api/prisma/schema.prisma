@@ -1,0 +1,405 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// ENUMS
+// ─────────────────────────────────────────────
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+  @@map("role")
+}
+
+enum CareerType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERNSHIP
+  REMOTE
+  @@map("career_type")
+}
+
+enum ApplicationStatus {
+  NEW
+  REVIEWED
+  SHORTLISTED
+  REJECTED
+  HIRED
+  @@map("application_status")
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  CONVERTED
+  CLOSED
+  @@map("lead_status")
+}
+
+enum PartnerType {
+  COLLEGE
+  BRAND
+  INFLUENCER
+  MEDIA
+  EVENT
+  OTHER
+  @@map("partner_type")
+}
+
+// ─────────────────────────────────────────────
+// ADMINS
+// ─────────────────────────────────────────────
+model Admin {
+  id               String    @id @default(uuid()) @db.Uuid
+  name             String
+  email            String    @unique
+  password_hash    String
+  role             Role      @default(EDITOR)
+  is_active        Boolean   @default(true)
+  last_login_at    DateTime?
+  refresh_token    String?   @unique
+  token_expires_at DateTime?
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+  pages_created        Page[]       @relation("PageCreatedBy")
+  pages_updated        Page[]       @relation("PageUpdatedBy")
+  services_created     Service[]    @relation("ServiceCreatedBy")
+  services_updated     Service[]    @relation("ServiceUpdatedBy")
+  team_members_created TeamMember[] @relation("TeamMemberCreatedBy")
+  careers_created      Career[]     @relation("CareerCreatedBy")
+  @@map("admins")
+}
+
+// ─────────────────────────────────────────────
+// SITE_SETTINGS
+// ─────────────────────────────────────────────
+model SiteSetting {
+  id         String   @id @default(uuid()) @db.Uuid
+  key        String   @unique
+  value      String   @db.Text
+  updated_at DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+// ─────────────────────────────────────────────
+// MEDIA (asset library)
+// NEW: Central asset store. All models reference
+//      media_id instead of raw URL strings.
+//      Enables Cloudinary-backed cleanup and reuse.
+// ─────────────────────────────────────────────
+model Media {
+  id           String   @id @default(uuid()) @db.Uuid
+  filename     String
+  url          String
+  cloudinary_id String?  @unique   // Cloudinary public_id for deletion
+  mime_type    String?
+  size_bytes   Int?
+  alt_text     String?
+  uploaded_at  DateTime @default(now())
+
+  @@map("media")
+}
+
+// ─────────────────────────────────────────────
+// PAGES
+// ─────────────────────────────────────────────
+model Page {
+  id               String   @id @default(uuid()) @db.Uuid
+  slug             String   @unique
+  title            String
+  meta_title       String?
+  meta_description String?
+  hero_heading     String?
+  hero_subtext     String?
+  is_published     Boolean  @default(false)
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+
+  // Nullable audit trail — does NOT constrain page lifecycle to admin existence
+  created_by_id String? @db.Uuid
+  updated_by_id String? @db.Uuid
+
+  created_by Admin? @relation("PageCreatedBy", fields: [created_by_id], references: [id], onDelete: SetNull)
+  updated_by Admin? @relation("PageUpdatedBy", fields: [updated_by_id], references: [id], onDelete: SetNull)
+
+  @@map("pages")
+}
+
+// ─────────────────────────────────────────────
+// SERVICES
+// FIX: Added rich content fields to support
+//      Overview / Solutions / Process / FAQ
+//      sections required per service page.
+// ─────────────────────────────────────────────
+model Service {
+  id             String   @id @default(uuid()) @db.Uuid
+  slug           String   @unique
+  title          String
+  tagline        String?
+  overview       String?  @db.Text
+  // Structured JSON arrays — see types below:
+  // solutions:    [{ title, description }]
+  // process_steps:[{ step, title, description }]
+  // extra_section: flexible per-service unique section
+  solutions      Json?
+  process_steps  Json?
+  extra_section  Json?    // e.g. "Media Opportunities" for PR, "Deliverables" for SMM
+  icon_url       String?
+  cover_image_url String?
+  is_active      Boolean  @default(true)
+  sort_order     Int      @default(0)
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  created_by_id String? @db.Uuid
+  updated_by_id String? @db.Uuid
+
+
+  created_by Admin? @relation("ServiceCreatedBy", fields: [created_by_id], references: [id], onDelete: SetNull)
+  updated_by Admin? @relation("ServiceUpdatedBy", fields: [updated_by_id], references: [id], onDelete: SetNull)
+
+
+  faqs FAQ[]
+
+  @@map("services")
+}
+
+// ─────────────────────────────────────────────
+// FAQS
+// NEW: Standalone FAQ model. Linked to a service
+//      (service_id = null means it's a global FAQ).
+//      Enables proper CRUD in admin panel.
+// ─────────────────────────────────────────────
+model FAQ {
+  id         String   @id @default(uuid()) @db.Uuid
+  service_id String?  @db.Uuid  // null = global / about page FAQ
+  question   String
+  answer     String   @db.Text
+  sort_order Int      @default(0)
+  is_active  Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  service Service? @relation(fields: [service_id], references: [id], onDelete: SetNull)
+
+  @@map("faqs")
+}
+
+// ─────────────────────────────────────────────
+// TEAM_MEMBERS
+// FIX: Added missing created_at + updated_at
+// ─────────────────────────────────────────────
+model TeamMember {
+  id           String   @id @default(uuid()) @db.Uuid
+  name         String
+  role         String
+  bio          String?  @db.Text
+  photo_url    String?
+  linkedin_url String?
+  twitter_url  String?
+  sort_order   Int      @default(0)
+  is_active    Boolean  @default(true)
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  created_by_id String? @db.Uuid
+  created_by Admin? @relation("TeamMemberCreatedBy", fields: [created_by_id], references: [id], onDelete: SetNull)
+  
+  @@map("team_members")
+}
+
+// ─────────────────────────────────────────────
+// TESTIMONIALS
+// FIX: Added missing timestamps
+// ─────────────────────────────────────────────
+model Testimonial {
+  id          String   @id @default(uuid()) @db.Uuid
+  client_name String
+  company     String?
+  role        String?              // e.g. "Head of Marketing, Acme Inc"
+  quote       String   @db.Text
+  photo_url   String?
+  rating      Int?                 // 1–5 optional star rating
+  is_active   Boolean  @default(true)
+  sort_order  Int      @default(0)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@map("testimonials")
+}
+
+// ─────────────────────────────────────────────
+// PARTNER_LOGOS
+// FIX: Added missing timestamps
+// ─────────────────────────────────────────────
+model PartnerLogo {
+  id           String   @id @default(uuid()) @db.Uuid
+  company_name String
+  logo_url     String
+  website_url  String?
+  sort_order   Int      @default(0)
+  is_active    Boolean  @default(true)
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  @@map("partner_logos")
+}
+
+// ─────────────────────────────────────────────
+// INDUSTRIES
+// FIX: Added missing timestamps
+// ─────────────────────────────────────────────
+model Industry {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String
+  description String?
+  icon_url    String?
+  sort_order  Int      @default(0)
+  is_active   Boolean  @default(true)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@map("industries")
+}
+
+// ─────────────────────────────────────────────
+// VALUE_PROPOSITIONS (Why Market Orbit page)
+// NEW: CMS-editable content for "Why Choose Us"
+//      homepage section + "Why Market Orbit" page.
+// ─────────────────────────────────────────────
+model ValueProposition {
+  id          String   @id @default(uuid()) @db.Uuid
+  title       String
+  description String   @db.Text
+  icon_url    String?
+  sort_order  Int      @default(0)
+  is_active   Boolean  @default(true)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@map("value_propositions")
+}
+
+// ─────────────────────────────────────────────
+// CAREERS
+// FIX: @db.Text on long fields
+// ─────────────────────────────────────────────
+model Career {
+  id           String     @id @default(uuid()) @db.Uuid
+  title        String
+  type         CareerType
+  department   String?
+  location     String?
+  description  String?    @db.Text
+  requirements String?    @db.Text
+  salary_range String?    // e.g. "₹4–6 LPA" — optional
+  is_active    Boolean    @default(true)
+  posted_at    DateTime   @default(now())
+  expires_at   DateTime?
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+
+  created_by_id String? @db.Uuid
+  created_by Admin? @relation("CareerCreatedBy", fields: [created_by_id], references: [id], onDelete: SetNull)
+  applications CareerApplication[]
+
+  @@map("careers")
+}
+
+// ─────────────────────────────────────────────
+// CAREER_APPLICATIONS
+// FIX: Added status field — core CMS requirement.
+// ─────────────────────────────────────────────
+model CareerApplication {
+  id           String            @id @default(uuid()) @db.Uuid
+  career_id    String            @db.Uuid
+  name         String
+  email        String
+  phone        String?
+  resume_url   String?
+  cover_letter String?           @db.Text
+  status       ApplicationStatus @default(NEW)
+  admin_notes  String?           @db.Text  // internal notes for the reviewing admin
+  applied_at   DateTime          @default(now())
+  updated_at   DateTime          @updatedAt
+
+  career Career @relation(fields: [career_id], references: [id], onDelete: Cascade)
+
+  @@index([career_id])
+  @@index([status])
+  @@map("career_applications")
+}
+
+// ─────────────────────────────────────────────
+// CONTACT_SUBMISSIONS
+// FIX: Added is_read, status, admin_notes
+// ─────────────────────────────────────────────
+model ContactSubmission {
+  id           String     @id @default(uuid()) @db.Uuid
+  name         String
+  email        String
+  phone        String?
+  subject      String?
+  message      String     @db.Text
+  is_read      Boolean    @default(false)
+  status       LeadStatus @default(NEW)
+  admin_notes  String?    @db.Text
+  submitted_at DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+
+  @@index([status])
+  @@index([is_read])
+  @@map("contact_submissions")
+}
+
+// ─────────────────────────────────────────────
+// PARTNER_INQUIRIES
+// FIX: partnership_type → enum PartnerType
+//      Added is_read, status, admin_notes
+// ─────────────────────────────────────────────
+model PartnerInquiry {
+  id               String      @id @default(uuid()) @db.Uuid
+  company_name     String
+  contact_name     String
+  email            String
+  phone            String?
+  partnership_type PartnerType?
+  message          String?     @db.Text
+  is_read          Boolean     @default(false)
+  status           LeadStatus  @default(NEW)
+  admin_notes      String?     @db.Text
+  submitted_at     DateTime    @default(now())
+  updated_at       DateTime    @updatedAt
+
+  @@index([status])
+  @@index([partnership_type])
+  @@map("partner_inquiries")
+}
+
+// ─────────────────────────────────────────────
+// ANALYTICS_EVENTS
+// FIX: Added indexes on hot query columns
+// ─────────────────────────────────────────────
+model AnalyticsEvent {
+  id         String   @id @default(uuid()) @db.Uuid
+  event_type String
+  page_slug  String?
+  meta       Json?
+  ip_hash    String?
+  created_at DateTime @default(now())
+
+  @@index([event_type])
+  @@index([created_at])
+  @@index([page_slug])
+  @@map("analytics_events")
+}
