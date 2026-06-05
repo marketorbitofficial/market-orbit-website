@@ -1,4 +1,4 @@
-import { CareerType, ApplicationStatus } from "../types/index.js"
+import { CareerType, ApplicationStatus } from "@prisma/client"
 export interface Career  {
   id  : string
   title : string

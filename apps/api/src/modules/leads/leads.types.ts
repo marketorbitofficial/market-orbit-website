@@ -1,4 +1,4 @@
-import { LeadStatus } from "../types/index.js"
+import { LeadStatus } from "@prisma/client"
 
 export interface ContactSubmission {
     id : string    
