@@ -1,57 +1,91 @@
 export default function ContactForm() {
   return (
-    <div>
-      <h1>Contact Form</h1>
-    </div>
-  );
-}
-export default function ContactInfo() {
-  return (
-    <div className="bg-[#0a0a0a] border border-zinc-900 p-8 text-white">
-      <p className="text-lime-400 text-xs tracking-[4px] uppercase mb-8">
-        Contact Information
-      </p>
+    <div className="bg-black text-white">
+      <div className="max-w-4xl mx-auto border border-zinc-900 p-8 bg-[#0a0a0a]">
 
-      <div className="space-y-8">
-        <div>
-          <h3 className="text-lime-400 text-xs tracking-[3px] uppercase mb-2">
-            Headquarters Address
-          </h3>
-          <p className="text-zinc-400">
-            Bengaluru, Karnataka, India
-          </p>
+        <p className="text-lime-400 text-xs tracking-[4px] uppercase mb-8">
+          Send Us A Message
+        </p>
+
+        <div className="grid grid-cols-2 gap-6">
+
+          <div>
+            <label className="block text-lime-400 text-xs tracking-[3px] uppercase mb-2">
+              Full Name
+            </label>
+            <input
+              type="text"
+              placeholder="Your name"
+              className="w-full bg-black border border-zinc-800 p-3 outline-none"
+            />
+          </div>
+
+          <div>
+            <label className="block text-lime-400 text-xs tracking-[3px] uppercase mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="you@email.com"
+              className="w-full bg-black border border-zinc-800 p-3 outline-none"
+            />
+          </div>
+
+          <div>
+            <label className="block text-lime-400 text-xs tracking-[3px] uppercase mb-2">
+              Phone
+            </label>
+            <input
+              type="tel"
+              placeholder="+91"
+              className="w-full bg-black border border-zinc-800 p-3 outline-none"
+            />
+          </div>
+
+          <div>
+            <label className="block text-lime-400 text-xs tracking-[3px] uppercase mb-2">
+              Service Interest
+            </label>
+            <input placeholder="Select a Service" ></input>
+            <select className="w-full bg-black border border-zinc-800 p-3">
+              <option>Select Service</option>
+              <option>Youth Marketing</option>
+              <option>PR & Personal Branding</option>
+              <option>Government Marketing</option>
+              <option>Social Media Marketing</option>
+            </select>
+          </div>
+
         </div>
 
-        <div>
-          <h3 className="text-lime-400 text-xs tracking-[3px] uppercase mb-2">
-            Email
-          </h3>
-          <p className="text-zinc-400">
-            hello@marketorbit.in
-          </p>
+        <div className="mt-6">
+          <label className="block text-lime-400 text-xs tracking-[3px] uppercase mb-2">
+            Budget Range
+          </label>
+          <input placeholder="Under 50k"></input>
+          <select className="w-full bg-black border border-zinc-800 p-3">
+            <option>Under ₹50K</option>
+            <option>₹50K - ₹2L</option>
+            <option>₹2L - ₹5L</option>
+            <option>₹5L+</option>
+          </select>
         </div>
 
-        <div>
-          <h3 className="text-lime-400 text-xs tracking-[3px] uppercase mb-2">
-            Phone
-          </h3>
-          <p className="text-zinc-400">
-            +91 XXXXX XXXXX
-          </p>
+        <div className="mt-6">
+          <label className="block text-lime-400 text-xs tracking-[3px] uppercase mb-2">
+            Message
+          </label>
+          <textarea
+            rows={6}
+            className="w-full bg-black border border-zinc-800 p-3 outline-none">
+            
+         </textarea>
         </div>
 
-        <div>
-          <h3 className="text-lime-400 text-xs tracking-[3px] uppercase mb-2">
-            Business Hours
-          </h3>
-          <p className="text-zinc-400">
-            Mon - Fri, 9 AM - 6 PM
-          </p>
-        </div>
-
-        <button className="bg-lime-400 text-black px-6 py-3 font-semibold">
-          CHAT ON WHATSAPP
+        <button className="mt-8 bg-lime-400 text-black px-10 py-4 font-semibold hover:opacity-90">
+          SEND MESSAGE
         </button>
+
       </div>
     </div>
   );
