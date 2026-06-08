@@ -1,4 +1,4 @@
-import { Role } from "../types/index.js"
+import { Role } from "@prisma/client"
 
 export interface Admin {
   id : string
