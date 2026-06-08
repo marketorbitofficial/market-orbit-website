@@ -1,4 +1,4 @@
-import { PartnerType, LeadStatus } from "../types/index.js"
+import { PartnerType,LeadStatus } from "@prisma/client"
 export interface PartnerInquiry {
   id : string
   company_name : string
