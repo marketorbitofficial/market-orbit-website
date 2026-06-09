@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { ArrowUpRight, MapPin, Briefcase, BarChart2, X } from "lucide-react";
 
@@ -793,3 +794,140 @@ function TagWithIcon({
     </span>
   );
 }
+
+
+// function DeptTag({ children, color, textColor }: { children: React.ReactNode; color: string; textColor: string }) {
+//   return <span style={{ fontFamily: "'Geist Mono', monospace", fontSize: "10px", fontWeight: "500", color: textColor, background: color, padding: "2px 7px", letterSpacing: "0.04em" }}>{children}</span>;
+// }
+
+// function MetaTag({ children, icon }: { children: React.ReactNode; icon: React.ReactNode }) {
+//   return <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", color: "#777", display: "inline-flex", alignItems: "center", gap: "4px" }}>{icon}{children}</span>;
+// }
+
+// function DrawerSection({ title, children, last }: { title: string; children: React.ReactNode; last?: boolean }) {
+//   return (
+//     <div style={{ marginBottom: last ? 0 : "36px" }}>
+//       <h3 style={{ fontFamily: "'DM Sans', sans-serif", color: "#d0d0d0", fontSize: "14px", fontWeight: "600", letterSpacing: "-0.01em", marginBottom: "14px" }}>{title}</h3>
+//       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>{children}</div>
+//     </div>
+//   );
+// }
+
+// function DrawerListItem({ children, muted }: { children: React.ReactNode; muted?: boolean }) {
+//   return (
+//     <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+//       <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: muted ? "#444" : "#c8ff00", flexShrink: 0, marginTop: "8px" }} />
+//       <p style={{ fontFamily: "'DM Sans', sans-serif", color: muted ? "#666" : "#909090", fontSize: "14px", lineHeight: "1.7", margin: 0 }}>{children}</p>
+//     </div>
+//   );
+// }
+
+// function FilterGroup({ label, options, value, onChange }: { label: string; options: string[]; value: string; onChange: (v: string) => void }) {
+//   return (
+//     <div className="flex items-center gap-1.5">
+//       <span style={{ fontFamily: "'Geist Mono', monospace", color: "#666", fontSize: "11px", letterSpacing: "0.1em" }} className="uppercase mr-1">{label}:</span>
+//       {options.map((opt) => (
+//         <button key={opt} onClick={() => onChange(opt)} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", fontWeight: value === opt ? "600" : "400", color: value === opt ? "#080808" : "#909090", background: value === opt ? "#c8ff00" : "#00000000", borderWidth: "1px", borderStyle: "solid", borderColor: value === opt ? "#c8ff00" : "#333", borderRadius: "100px", padding: "4px 12px", cursor: "pointer", transition: "all 0.15s" }}>{opt}</button>
+//       ))}
+//     </div>
+//   );
+// }
+
+// function JobDrawer({ job, onClose }: { job: Job | null; onClose: () => void }) {
+//   const isOpen = job !== null;
+//   return (
+//     <>
+//       <div onClick={onClose} style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "#080808cc", zIndex: 99, opacity: isOpen ? 1 : 0, pointerEvents: isOpen ? "auto" : "none", transition: "opacity 0.3s ease" }} />
+//       <div style={{ position: "fixed", right: 0, top: 0, bottom: 0, width: "600px", maxWidth: "100%", background: "#141414", borderLeftWidth: "1px", borderLeftStyle: "solid", borderLeftColor: "#1a1a1a", zIndex: 100, overflowY: "auto", transform: isOpen ? "translateX(0)" : "translateX(100%)", transition: "transform 0.38s cubic-bezier(0.4,0,0.2,1)", display: "flex", flexDirection: "column" }}>
+//         {job && (
+//           <>
+//             <div style={{ padding: "36px 40px 28px", borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "#1a1a1a", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "16px", position: "sticky", top: 0, background: "#141414", zIndex: 2 }}>
+//               <div>
+//                 <p style={{ fontFamily: "'Geist Mono', monospace", fontSize: "10px", color: "#c8ff00", letterSpacing: "0.1em", margin: "0 0 10px" }}>{job.team} · {job.salary}</p>
+//                 <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#f5f5f5", fontSize: "clamp(20px, 3vw, 28px)", fontWeight: "700", letterSpacing: "-0.01em", lineHeight: "1.15", margin: 0 }}>{job.title}</h2>
+//               </div>
+//               <button onClick={onClose} style={{ width: "32px", height: "32px", borderRadius: "50%", borderWidth: "1px", borderStyle: "solid", borderColor: "#333", background: "#00000000", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", flexShrink: 0, marginTop: "4px" }}>
+//                 <X size={14} color="#777" strokeWidth={2} />
+//               </button>
+//             </div>
+//             <div style={{ padding: "18px 40px", borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "#1a1a1a", display: "flex", flexWrap: "wrap", gap: "8px" }}>
+//               <DeptTag color="#c8ff0020" textColor="#c8ff00">{job.department}</DeptTag>
+//               <MetaTag icon={<MapPin size={10} />}>{job.location}</MetaTag>
+//               <MetaTag icon={<BarChart2 size={10} />}>{job.experience}</MetaTag>
+//               <MetaTag icon={<Briefcase size={10} />}>{job.type}</MetaTag>
+//             </div>
+//             <div style={{ padding: "36px 40px", flex: 1 }}>
+//               <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#909090", fontSize: "15px", lineHeight: "1.75", marginBottom: "40px" }}>{job.description}</p>
+//               <DrawerSection title="What you'll do">{job.responsibilities.map((r) => <DrawerListItem key={r}>{r}</DrawerListItem>)}</DrawerSection>
+//               <DrawerSection title="What we're looking for">{job.requirements.map((r) => <DrawerListItem key={r}>{r}</DrawerListItem>)}</DrawerSection>
+//               <DrawerSection title="Nice to have" last>{job.niceToHave.map((r) => <DrawerListItem key={r} muted>{r}</DrawerListItem>)}</DrawerSection>
+//             </div>
+//             <div style={{ padding: "24px 40px", borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "#1a1a1a", background: "#141414", display: "flex", alignItems: "center", gap: "16px" }}>
+//               <button style={{ background: "#c8ff00", color: "#080808", borderWidth: 0, borderStyle: "none", boxShadow: "none", outline: "none", padding: "13px 28px", fontFamily: "'DM Sans', sans-serif", fontSize: "12px", fontWeight: "700", cursor: "pointer", display: "flex", alignItems: "center", gap: "8px", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+//                 Apply for this role <ArrowUpRight size={15} strokeWidth={2.5} />
+//               </button>
+//               <span style={{ fontFamily: "'DM Sans', sans-serif", color: "#666", fontSize: "12px" }}>Typically responds within 3 business days</span>
+//             </div>
+//           </>
+//         )}
+//       </div>
+//     </>
+//   );
+// }
+
+
+// function OpenPositions() {
+//   const [dept, setDept] = useState("All");
+//   const [loc, setLoc] = useState("All");
+//   const [level, setLevel] = useState("All");
+//   const [type, setType] = useState("All");
+//   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+//   const filtered = jobs.filter((j) => {
+//     if (dept !== "All" && j.department !== dept) return false;
+//     if (loc !== "All" && j.location !== loc) return false;
+//     if (level !== "All" && j.experience !== level) return false;
+//     if (type !== "All" && j.type !== type) return false;
+//     return true;
+//   });
+//   return (
+//     <>
+//       <section id="roles" style={{ background: "#080808", borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "#1a1a1a" }} className="py-28 px-6">
+//         <div className="max-w-7xl mx-auto">
+//           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+//             <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#f5f5f5", lineHeight: "1.1", letterSpacing: "-0.01em", fontWeight: "700" }} className="text-4xl md:text-[52px]">Explore opportunities</h2>
+//             <span style={{ fontFamily: "'Geist Mono', monospace", color: "#666", fontSize: "12px", paddingBottom: "8px" }}>{filtered.length} {filtered.length !== 1 ? "roles" : "role"} available</span>
+//           </div>
+//           <div className="flex flex-wrap gap-3 mb-10">
+//             <FilterGroup label="Department" options={depts} value={dept} onChange={setDept} />
+//             <FilterGroup label="Location" options={locs} value={loc} onChange={setLoc} />
+//             <FilterGroup label="Level" options={levels} value={level} onChange={setLevel} />
+//             <FilterGroup label="Type" options={types} value={type} onChange={setType} />
+//           </div>
+//           <div className="flex flex-col">
+//             {filtered.length === 0 ? (
+//               <div style={{ background: "#0f0f0f", borderWidth: "1px", borderStyle: "solid", borderColor: "#1a1a1a", padding: "48px", textAlign: "center" }}>
+//                 <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#909090", fontSize: "14px" }}>No roles match your filters. Try adjusting them.</p>
+//               </div>
+//             ) : (
+//               filtered.map((job, i) => (
+//                 <div key={job.title} onClick={() => setSelectedJob(job)} style={{ borderBottomWidth: i === filtered.length - 1 ? "0" : "1px", borderBottomStyle: "solid", borderBottomColor: "#1a1a1a", padding: "20px 0", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", cursor: "pointer", transition: "opacity 0.15s" }} onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.opacity = "0.72")} onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.opacity = "1")}>
+//                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 flex-1 min-w-0">
+//                     <span style={{ fontFamily: "'DM Sans', sans-serif", color: "#f5f5f5", fontSize: "15px", fontWeight: "600", letterSpacing: "-0.01em" }}>{job.title}</span>
+//                     <div className="flex flex-wrap items-center gap-2">
+//                       <DeptTag color="#c8ff0020" textColor="#c8ff00">{job.department}</DeptTag>
+//                       <MetaTag icon={<MapPin size={10} />}>{job.location}</MetaTag>
+//                       <MetaTag icon={<BarChart2 size={10} />}>{job.experience}</MetaTag>
+//                       <MetaTag icon={<Briefcase size={10} />}>{job.type}</MetaTag>
+//                     </div>
+//                   </div>
+//                   <button style={{ fontFamily: "'DM Sans', sans-serif", color: "#f5f5f5", borderWidth: "1px", borderStyle: "solid", borderColor: "#333", padding: "8px 18px", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "6px", cursor: "pointer", background: "#00000000", flexShrink: 0, whiteSpace: "nowrap", pointerEvents: "none" }}>View role <ArrowUpRight size={13} /></button>
+//                 </div>
+//               ))
+//             )}
+//           </div>
+//         </div>
+//       </section>
+//       <JobDrawer job={selectedJob} onClose={() => setSelectedJob(null)} />
+//     </>
+//   );
+// }
