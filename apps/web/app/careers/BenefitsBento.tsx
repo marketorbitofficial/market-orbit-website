@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 const benefits = [
@@ -74,7 +75,7 @@ export function BenefitsBento() {
               maxWidth: "380px",
             }}
           >
-            Click any benefit to read what it actually means in practice — no corporate fluff.
+            Click to read what it actually means in practice — no corporate fluff.
           </p>
         </div>
 
