@@ -1,6 +1,10 @@
-import { useState } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CareersPage } from "./careers/page";
+import ServicesPage from "./services/page";
+import WhyMarketOrbitPage from "./why/page";
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
@@ -13,6 +17,19 @@ const navLinks = [
   { label: "Partner With Us", page: "partner" },
   { label: "Contact", page: "contact" },
 ];
+
+const pagePaths: Record<string, string> = {
+  careers: "/careers",
+  services: "/services",
+  why: "/why",
+};
+
+function pageFromPath(pathname: string) {
+  if (pathname === "/why") return "why";
+  if (pathname === "/services") return "services";
+  if (pathname === "/careers") return "careers";
+  return "careers";
+}
 
 function Navbar({
   activePage,
@@ -201,12 +218,39 @@ function Navbar({
 // ─── App ──────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const [page, setPage] = useState("careers");
+  const [page, setPage] = useState(() =>
+    typeof window === "undefined" ? "careers" : pageFromPath(window.location.pathname)
+  );
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setPage(pageFromPath(window.location.pathname));
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  function handleNavigate(nextPage: string) {
+    setPage(nextPage);
+
+    const nextPath = pagePaths[nextPage];
+    if (nextPath && window.location.pathname !== nextPath) {
+      window.history.pushState(null, "", nextPath);
+    }
+  }
+
   return (
     <div style={{ background: "#080808", minHeight: "100vh" }}>
-      <Navbar activePage={page} onNavigate={setPage} />
+      {page !== "why" && (
+        <Navbar activePage={page} onNavigate={handleNavigate} />
+      )}
       {page === "careers" ? (
         <CareersPage />
+      ) : page === "services" ? (
+        <ServicesPage />
+      ) : page === "why" ? (
+        <WhyMarketOrbitPage />
       ) : (
         <div
           style={{
@@ -241,7 +285,7 @@ export default function App() {
             Coming soon
           </p>
           <button
-            onClick={() => setPage("careers")}
+            onClick={() => handleNavigate("careers")}
             style={{
               fontFamily: "'DM Sans', sans-serif",
               color: "#c8ff00",
