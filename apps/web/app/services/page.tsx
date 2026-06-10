@@ -82,7 +82,7 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-const revealTransition = { duration: 0.7, ease: "easeOut" };
+const revealTransition = { duration: 0.7, ease: "easeOut" as const };
 
 const revealViewport = { once: true, amount: 0.2 };
 
