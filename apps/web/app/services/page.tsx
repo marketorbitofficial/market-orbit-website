@@ -110,31 +110,6 @@ export default function ServicesPage() {
 
   return (
     <main className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA]">
-      <nav className="mx-auto flex h-[68px] w-full max-w-[1140px] items-center justify-between border-b border-[#1A1A1A] bg-[#080808] px-5 md:px-8">
-        <a
-          href="/"
-          className="font-serif text-2xl leading-8 tracking-[1.2px] text-[#FAFAFA]"
-        >
-          Market Orbit
-        </a>
-        <div className="hidden items-center gap-6 text-sm leading-5 text-[#aaaaaa] lg:flex">
-          {navItems.map((item) => (
-            <a
-              key={item}
-              href={item === "Services" ? "/services" : "#"}
-              className={item === "Services" ? "text-[#C8FF00]" : ""}
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-        <a
-          href="#contact"
-          className="flex h-11 items-center justify-center bg-[#C8FF00] px-5 font-serif text-xs uppercase leading-4 tracking-[1.2px] text-[#080808]"
-        >
-          Start Project
-        </a>
-      </nav>
 
       <motion.section
         className="relative mx-auto flex min-h-[760px] w-full max-w-[1140px] items-center justify-center overflow-hidden bg-[#080808] px-8 py-24 text-center lg:min-h-[956px]"
@@ -145,9 +120,9 @@ export default function ServicesPage() {
         transition={revealTransition}
       >
         {/* User-uploaded background image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-          style={{ backgroundImage: "url('/services-hero-bg.jpg')" }} 
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/services-hero-bg.jpg')" }}
         />
         {/* Dark overlay for text readability and blending */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#080808]/90 via-[#080808]/60 to-[#080808]" />
@@ -324,16 +299,15 @@ export default function ServicesPage() {
                   return (
                     <motion.div
                       key={service.title}
-                      className={`border-b border-[#222222] transition-colors duration-300 ${
-                        isOpen ? "bg-[#141414]" : "bg-transparent"
-                      }`}
+                      className={`border-b border-[#222222] transition-colors duration-300 ${isOpen ? "bg-[#141414]" : "bg-transparent"
+                        }`}
                       whileHover={
                         isOpen
                           ? undefined
                           : {
-                              backgroundColor: "rgba(255,255,255,0.02)",
-                              borderColor: "rgba(194,255,0,.15)",
-                            }
+                            backgroundColor: "rgba(255,255,255,0.02)",
+                            borderColor: "rgba(194,255,0,.15)",
+                          }
                       }
                     >
                       <button
@@ -343,25 +317,22 @@ export default function ServicesPage() {
                             current === index ? null : index
                           )
                         }
-                        className={`flex w-full items-center justify-between text-left ${
-                          isOpen ? "px-8 pb-0 pt-8" : "min-h-[72px] py-[21.5px]"
-                        }`}
+                        className={`flex w-full items-center justify-between text-left ${isOpen ? "px-8 pb-0 pt-8" : "min-h-[72px] py-[21.5px]"
+                          }`}
                         aria-expanded={isOpen}
                       >
                         <div className="flex items-center gap-6">
                           <ArrowMark active={isOpen} />
                           <h3
-                            className={`font-serif text-xl font-bold leading-7 transition-colors duration-300 ${
-                              isOpen ? "text-[#C8FF00]" : "text-[#FAFAFA]"
-                            }`}
+                            className={`font-serif text-xl font-bold leading-7 transition-colors duration-300 ${isOpen ? "text-[#C8FF00]" : "text-[#FAFAFA]"
+                              }`}
                           >
                             {service.title}
                           </h3>
                         </div>
                         <span
-                          className={`inline-block text-base leading-none transition duration-300 ${
-                            isOpen ? "text-[#C8FF00]" : "text-[#555]"
-                          }`}
+                          className={`inline-block text-base leading-none transition duration-300 ${isOpen ? "text-[#C8FF00]" : "text-[#555]"
+                            }`}
                           style={{
                             transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
                           }}

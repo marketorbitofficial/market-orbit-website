@@ -61,144 +61,158 @@ export default function ContactForm() {
       {/* Divider */}
       <div className="w-full h-px bg-white/10 mb-8" />
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Row 1 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div className="flex flex-col gap-2">
-            <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
-              Full Name
-            </label>
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              placeholder="Your Name"
-              required
-              className="bg-transparent border border-white/20 text-white placeholder:text-white/25 px-4 py-3 text-sm focus:outline-none focus:border-[#C6FF00] focus:ring-1 focus:ring-[#C6FF00]/30 transition-colors"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="you@company.com"
-              required
-              className="bg-transparent border border-white/20 text-white placeholder:text-white/25 px-4 py-3 text-sm focus:outline-none focus:border-[#C6FF00] focus:ring-1 focus:ring-[#C6FF00]/30 transition-colors"
-            />
-          </div>
+      {/* FORMS redirection(remove it in future) */}
+      <div className="relative">
+        {/* Overlay & Google Forms Button */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <a
+            href="https://forms.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#C6FF00] text-black px-8 py-4 text-xs tracking-[0.25em] uppercase font-bold hover:bg-white transition-colors duration-200 shadow-[0_0_40px_rgba(198,255,0,0.3)]"
+          >
+            Open Google Form →
+          </a>
         </div>
 
-        {/* Row 2 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div className="flex flex-col gap-2">
-            <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
-              Phone
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="+91 XXXXX XXXXX"
-              className="bg-transparent border border-white/20 text-white placeholder:text-white/25 px-4 py-3 text-sm focus:outline-none focus:border-[#C6FF00] focus:ring-1 focus:ring-[#C6FF00]/30 transition-colors"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
-              Service Interest
-            </label>
-            <div className="relative">
-              <select
-                name="serviceInterest"
-                value={formData.serviceInterest}
+        <form onSubmit={handleSubmit} className="space-y-6 opacity-30 blur-[3px] pointer-events-none select-none">
+          {/* Row 1 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="flex flex-col gap-2">
+              <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
+                Full Name
+              </label>
+              <input
+                type="text"
+                name="fullName"
+                value={formData.fullName}
                 onChange={handleChange}
+                placeholder="Your Name"
                 required
-                className="w-full appearance-none bg-[#0a0a0a] border border-white/20 text-white px-4 py-3 text-sm focus:outline-none focus:border-[#C6FF00] focus:ring-1 focus:ring-[#C6FF00]/30 transition-colors cursor-pointer"
-              >
-                <option value="" disabled className="text-white/30 bg-[#111]">
-                  Select a Service
-                </option>
-                {SERVICE_OPTIONS.map((opt) => (
-                  <option key={opt} value={opt} className="bg-[#111] text-white">
-                    {opt}
-                  </option>
-                ))}
-              </select>
-              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/50">
-  <svg
-    width="14"
-    height="14"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M6 9L12 15L18 9"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-</span>
+                className="bg-transparent border border-white/20 text-white placeholder:text-white/25 px-4 py-3 text-sm focus:outline-none focus:border-[#C6FF00] focus:ring-1 focus:ring-[#C6FF00]/30 transition-colors"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="you@company.com"
+                required
+                className="bg-transparent border border-white/20 text-white placeholder:text-white/25 px-4 py-3 text-sm focus:outline-none focus:border-[#C6FF00] focus:ring-1 focus:ring-[#C6FF00]/30 transition-colors"
+              />
             </div>
           </div>
-        </div>
 
-        {/* Budget */}
-        <div className="flex flex-col gap-2">
-          <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
-            Budget Range
-          </label>
-          <div className="flex flex-wrap gap-3">
-            {BUDGET_OPTIONS.map((opt) => (
-              <button
-                key={opt}
-                type="button"
-                onClick={() => setFormData({ ...formData, budgetRange: opt })}
-                className={`px-4 py-2 text-xs tracking-wider uppercase font-semibold border transition-colors ${
-                  formData.budgetRange === opt
+          {/* Row 2 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="flex flex-col gap-2">
+              <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
+                Phone
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="+91 XXXXX XXXXX"
+                className="bg-transparent border border-white/20 text-white placeholder:text-white/25 px-4 py-3 text-sm focus:outline-none focus:border-[#C6FF00] focus:ring-1 focus:ring-[#C6FF00]/30 transition-colors"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
+                Service Interest
+              </label>
+              <div className="relative">
+                <select
+                  name="serviceInterest"
+                  value={formData.serviceInterest}
+                  onChange={handleChange}
+                  required
+                  className="w-full appearance-none bg-[#0a0a0a] border border-white/20 text-white px-4 py-3 text-sm focus:outline-none focus:border-[#C6FF00] focus:ring-1 focus:ring-[#C6FF00]/30 transition-colors cursor-pointer"
+                >
+                  <option value="" disabled className="text-white/30 bg-[#111]">
+                    Select a Service
+                  </option>
+                  {SERVICE_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt} className="bg-[#111] text-white">
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+                <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/50">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 9L12 15L18 9"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Budget */}
+          <div className="flex flex-col gap-2">
+            <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
+              Budget Range
+            </label>
+            <div className="flex flex-wrap gap-3">
+              {BUDGET_OPTIONS.map((opt) => (
+                <button
+                  key={opt}
+                  type="button"
+                  onClick={() => setFormData({ ...formData, budgetRange: opt })}
+                  className={`px-4 py-2 text-xs tracking-wider uppercase font-semibold border transition-colors ${formData.budgetRange === opt
                     ? "bg-[#C6FF00] border-[#C6FF00] text-black"
                     : "bg-transparent border-white/20 text-white/60 hover:border-white/50 hover:text-white"
-                }`}
-              >
-                {opt}
-              </button>
-            ))}
+                    }`}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Message */}
-        <div className="flex flex-col gap-2">
-          <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
-            Message
-          </label>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Tell us about your project, goals, and timeline..."
-            rows={5}
-            required
-            style={{ resize: "none" }}
-            className="bg-transparent border border-white/20 text-white placeholder:text-white/25 px-4 py-3 text-sm focus:outline-none focus:border-[#C6FF00] focus:ring-1 focus:ring-[#C6FF00]/30 transition-colors"
-          />
-        </div>
+          {/* Message */}
+          <div className="flex flex-col gap-2">
+            <label className="text-[13px] font-light tracking-[0.08em] uppercase text-white/70">
+              Message
+            </label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Tell us about your project, goals, and timeline..."
+              rows={5}
+              required
+              style={{ resize: "none" }}
+              className="bg-transparent border border-white/20 text-white placeholder:text-white/25 px-4 py-3 text-sm focus:outline-none focus:border-[#C6FF00] focus:ring-1 focus:ring-[#C6FF00]/30 transition-colors"
+            />
+          </div>
 
-        {/* Submit */}
-        <button
-          type="submit"
-          className="w-full bg-[#C6FF00] text-black text-xs tracking-[0.25em] uppercase font-bold py-4 hover:bg-white transition-colors duration-200"
-        >
-          Send Message →
-        </button>
-      </form>
+          {/* Submit */}
+          <button
+            type="submit"
+            className="w-full bg-[#C6FF00] text-black text-xs tracking-[0.25em] uppercase font-bold py-4 hover:bg-white transition-colors duration-200"
+          >
+            Send Message →
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
