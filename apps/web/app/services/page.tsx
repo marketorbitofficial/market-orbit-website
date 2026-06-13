@@ -1,4 +1,7 @@
-import Link from "next/link";
+"use client";
+
+import { useState, type ReactNode } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import StatsBlock from "./StatsBlock";
 import TestimonialBlock from "./TestimonialBlock";
 import CityMap from "./CityMap";
@@ -31,28 +34,60 @@ const services = [
   {
     title: "PR & Personal Branding",
     status: "Explore",
+    description:
+      "We shape founder voices, executive visibility and brand reputation with sharp positioning, media strategy and narrative consistency.",
+    deliverables: [
+      "Media Relations",
+      "Founder Branding",
+      "Thought Leadership",
+    ],
+    process: ["01 Discovery", "02 Positioning", "03 Amplification"],
   },
   {
     title: "Government Marketing",
     status: "Explore",
+    description:
+      "Public-facing campaigns built for clarity, trust and participation across communities, institutions and civic audiences.",
+    deliverables: [
+      "Public Campaigns",
+      "Awareness Programs",
+      "Community Outreach",
+    ],
+    process: ["01 Research", "02 Planning", "03 Execution"],
   },
   {
     title: "Social Media Marketing",
     status: "Explore",
+    description:
+      "Always-on social systems that turn strategy into reels, short-form content, community energy and measurable engagement.",
+    deliverables: [
+      "Content Strategy",
+      "Reels & Short Form",
+      "Community Management",
+    ],
+    process: ["01 Strategy", "02 Creation", "03 Optimization"],
   },
 ];
 
 
 const steps = [
-  ["Brief",     "Understand goals.",  "30 min discovery call"],
-  ["Strategy",  "Map the plan.",      "5-day turnaround"],
-  ["Execution", "Go live fast.",      "Campus-ready assets"],
-  ["Results",   "Measure impact.",    "Live reporting dashboard"],
+  ["Brief", "Understand goals.", "30 min discovery call"],
+  ["Strategy", "Map the plan.", "5-day turnaround"],
+  ["Execution", "Go live fast.", "Campus-ready assets"],
+  ["Results", "Measure impact.", "Live reporting dashboard"],
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const revealTransition = { duration: 0.7, ease: "easeOut" as const };
+
+const revealViewport = { once: true, amount: 0.2 };
 
 
-function Kicker({ children }: { children: React.ReactNode }) {
+function Kicker({ children }: { children: ReactNode }) {
   return (
     <p className="font-serif text-[11px] uppercase leading-6 tracking-[3.2px] text-[#C8FF00]">
       {children}
@@ -63,68 +98,71 @@ function Kicker({ children }: { children: React.ReactNode }) {
 function ArrowMark({ active = false }: { active?: boolean }) {
   return (
     <span
-      className={`block h-[9px] w-3 skew-x-[-24deg] ${
-        active ? "bg-[#C8FF00]" : "bg-[#3A3A3A]"
-      }`}
+      className={`block h-[9px] w-3 skew-x-[-24deg] ${active ? "bg-[#C8FF00]" : "bg-[#3A3A3A]"
+        }`}
       aria-hidden="true"
     />
   );
 }
 
 export default function ServicesPage() {
+  const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(0);
+
   return (
     <main className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA]">
-
-      <section className="relative mx-auto flex min-h-[760px] w-full max-w-[1140px] items-center justify-center overflow-hidden bg-[#080808] px-8 py-24 text-center lg:min-h-[956px]">
-        <div className="absolute inset-0 opacity-30 [background:radial-gradient(circle_at_30%_20%,rgba(200,255,0,0.16),transparent_32%),linear-gradient(135deg,#222_0%,#080808_45%,#141414_100%)]" />
-        <div className="absolute inset-0 bg-[#080808]/70" />
-
-        {/* ── Decorative typographic watermark ── */}
-        <span
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            left: "-5%",
-            top: "18%",
-            fontFamily: "Georgia, serif",
-            fontSize: "clamp(80px, 12vw, 160px)",
-            fontWeight: 900,
-            lineHeight: 1,
-            color: "#111",
-            transform: "rotate(-20deg)",
-            transformOrigin: "left center",
-            whiteSpace: "nowrap",
-            pointerEvents: "none",
-            userSelect: "none",
-            zIndex: 0,
-          }}
+      <nav className="mx-auto flex h-[68px] w-full max-w-[1140px] items-center justify-between border-b border-[#1A1A1A] bg-[#080808] px-5 md:px-8">
+        <a
+          href="/"
+          className="font-serif text-2xl leading-8 tracking-[1.2px] text-[#FAFAFA]"
         >
-          CULTURE
-        </span>
-        <span
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            left: "-5%",
-            top: "52%",
-            fontFamily: "Georgia, serif",
-            fontSize: "clamp(80px, 12vw, 160px)",
-            fontWeight: 900,
-            lineHeight: 1,
-            color: "#111",
-            opacity: 0.6,
-            transform: "rotate(-20deg)",
-            transformOrigin: "left center",
-            whiteSpace: "nowrap",
-            pointerEvents: "none",
-            userSelect: "none",
-            zIndex: 0,
-          }}
+          Market Orbit
+        </a>
+        <div className="hidden items-center gap-6 text-sm leading-5 text-[#aaaaaa] lg:flex">
+          {navItems.map((item) => (
+            <a
+              key={item}
+              href={item === "Services" ? "/services" : "#"}
+              className={item === "Services" ? "text-[#C8FF00]" : ""}
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+        <a
+          href="#contact"
+          className="flex h-11 items-center justify-center bg-[#C8FF00] px-5 font-serif text-xs uppercase leading-4 tracking-[1.2px] text-[#080808]"
         >
-          ORBIT
-        </span>
+          Start Project
+        </a>
+      </nav>
 
-        <div className="relative z-10 flex max-w-[448px] flex-col items-center gap-3">
+      <motion.section
+        className="relative mx-auto flex min-h-[760px] w-full max-w-[1140px] items-center justify-center overflow-hidden bg-[#080808] px-8 py-24 text-center lg:min-h-[956px]"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={revealViewport}
+        transition={revealTransition}
+      >
+        {/* User-uploaded background image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+          style={{ backgroundImage: "url('/services-hero-bg.jpg')" }} 
+        />
+        {/* Dark overlay for text readability and blending */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080808]/90 via-[#080808]/60 to-[#080808]" />
+        <div className="absolute inset-0 opacity-40 [background:radial-gradient(circle_at_30%_20%,rgba(200,255,0,0.16),transparent_32%)]" />
+
+
+
+        <motion.div
+          className="relative z-10 flex max-w-[448px] flex-col items-center gap-3"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ ...revealTransition, delay: 0.08 }}
+        >
           <Kicker>Youth Marketing</Kicker>
           <h1 className="font-serif text-[64px] leading-[0.92] tracking-[0.32px] text-[#FAFAFA] sm:text-[96px]">
             Services that move culture
@@ -139,13 +177,18 @@ export default function ServicesPage() {
           >
             Explore Services
           </a>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* ── Marquee Ticker ── */}
-      <div
+      <motion.div
         className="w-full overflow-hidden border-y border-[#1e1e1e]"
         aria-label="Stats ticker"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
+        transition={revealTransition}
       >
         <div className="marquee-track py-[10px]">
           {[0, 1].map((dupe) => (
@@ -181,9 +224,16 @@ export default function ServicesPage() {
             </span>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      <div className="mx-auto grid w-full max-w-[1140px] border-t border-[#222222] lg:grid-cols-2">
+      <motion.div
+        className="mx-auto grid w-full max-w-[1140px] border-t border-[#222222] lg:grid-cols-2"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={revealViewport}
+        transition={revealTransition}
+      >
         <aside className="border-[#222222] lg:border-r">
           <section className="bg-[#080808] px-8 py-24 text-center">
             <div className="mx-auto flex max-w-[505px] flex-col items-center gap-3">
@@ -268,63 +318,104 @@ export default function ServicesPage() {
             <div className="mx-auto max-w-[505px]">
               <Kicker>All Services</Kicker>
               <div className="mt-6 border-t border-[#222222]">
-                <div className="border-b border-[#222222] bg-[#141414] p-8">
-                  <div className="mb-6 flex items-center justify-between">
-                    <div className="flex items-center gap-6">
-                      <ArrowMark active />
-                      <h3 className="font-serif text-xl font-bold leading-7 text-[#C8FF00]">
-                        {services[0].title}
-                      </h3>
-                    </div>
-                    <p className="font-serif text-xs uppercase leading-4 tracking-[1.2px] text-[#C8FF00]">
-                      {services[0].status}
-                    </p>
-                  </div>
-                  <p className="text-sm leading-5 text-[#999999]">
-                    {services[0].description}
-                  </p>
-                  <div className="mt-6 grid gap-6 sm:grid-cols-2">
-                    <div>
-                      <Kicker>Deliverables</Kicker>
-                      <ul className="mt-3 space-y-1 text-[13px] leading-6 text-[#999999]">
-                        {services[0].deliverables?.map((item) => (
-                          <li key={item}>- {item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <Kicker>Process</Kicker>
-                      <ul className="mt-3 space-y-1 text-[13px] leading-6 text-[#999999]">
-                        {services[0].process?.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  <a
-                    href="#overview"
-                    className="mt-6 inline-flex font-serif text-xs uppercase leading-4 tracking-[1.2px] text-[#C8FF00]"
-                  >
-                    View Full Service -&gt;
-                  </a>
-                </div>
+                {services.map((service, index) => {
+                  const isOpen = openServiceIndex === index;
 
-                {services.slice(1).map((service) => (
-                  <div
-                    key={service.title}
-                    className="flex min-h-[72px] items-center justify-between border-b border-[#222222] py-[21.5px]"
-                  >
-                    <div className="flex items-center gap-6">
-                      <ArrowMark />
-                      <h3 className="font-serif text-xl font-bold leading-7 text-[#FAFAFA]">
-                        {service.title}
-                      </h3>
-                    </div>
-                    <p className="font-serif text-xs uppercase leading-4 tracking-[1.2px] text-[#999999]">
-                      {service.status}
-                    </p>
-                  </div>
-                ))}
+                  return (
+                    <motion.div
+                      key={service.title}
+                      className={`border-b border-[#222222] transition-colors duration-300 ${
+                        isOpen ? "bg-[#141414]" : "bg-transparent"
+                      }`}
+                      whileHover={
+                        isOpen
+                          ? undefined
+                          : {
+                              backgroundColor: "rgba(255,255,255,0.02)",
+                              borderColor: "rgba(194,255,0,.15)",
+                            }
+                      }
+                    >
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOpenServiceIndex((current) =>
+                            current === index ? null : index
+                          )
+                        }
+                        className={`flex w-full items-center justify-between text-left ${
+                          isOpen ? "px-8 pb-0 pt-8" : "min-h-[72px] py-[21.5px]"
+                        }`}
+                        aria-expanded={isOpen}
+                      >
+                        <div className="flex items-center gap-6">
+                          <ArrowMark active={isOpen} />
+                          <h3
+                            className={`font-serif text-xl font-bold leading-7 transition-colors duration-300 ${
+                              isOpen ? "text-[#C8FF00]" : "text-[#FAFAFA]"
+                            }`}
+                          >
+                            {service.title}
+                          </h3>
+                        </div>
+                        <span
+                          className={`inline-block text-base leading-none transition duration-300 ${
+                            isOpen ? "text-[#C8FF00]" : "text-[#555]"
+                          }`}
+                          style={{
+                            transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+                          }}
+                          aria-hidden="true"
+                        >
+                          +
+                        </span>
+                      </button>
+
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            key="content"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.36, ease: "easeOut" }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-8 pb-8 pt-6">
+                              <p className="text-sm leading-5 text-[#999999]">
+                                {service.description}
+                              </p>
+                              <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                                <div>
+                                  <Kicker>Deliverables</Kicker>
+                                  <ul className="mt-3 space-y-1 text-[13px] leading-6 text-[#999999]">
+                                    {service.deliverables.map((item) => (
+                                      <li key={item}>- {item}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                <div>
+                                  <Kicker>Process</Kicker>
+                                  <ul className="mt-3 space-y-1 text-[13px] leading-6 text-[#999999]">
+                                    {service.process.map((item) => (
+                                      <li key={item}>{item}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                              <a
+                                href="#overview"
+                                className="mt-6 inline-flex font-serif text-xs uppercase leading-4 tracking-[1.2px] text-[#C8FF00]"
+                              >
+                                View Full Service -&gt;
+                              </a>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -397,11 +488,18 @@ export default function ServicesPage() {
             </div>
           </section>
         </div>
-      </div>
+      </motion.div>
       {/* ── END outer 2-col grid ── */}
 
       {/* ── FAQ section: full-width 3-col grid ── */}
-      <section className="bg-[#0F0F0F] px-8 py-24">
+      <motion.section
+        className="bg-[#0F0F0F] px-8 py-24"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={revealViewport}
+        transition={revealTransition}
+      >
         <div
           style={{
             margin: "0 auto",
@@ -415,121 +513,121 @@ export default function ServicesPage() {
 
           {/* ── Col 1: Sticky editorial ── */}
           <div style={{ position: "sticky", top: "100px", alignSelf: "start" }}>
-                  {/* Label */}
-                  <p
-                    style={{
-                      fontSize: "9px",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.15em",
-                      color: "#444",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    Why it matters
-                  </p>
+            {/* Label */}
+            <p
+              style={{
+                fontSize: "9px",
+                textTransform: "uppercase",
+                letterSpacing: "0.15em",
+                color: "#444",
+                marginBottom: "16px",
+              }}
+            >
+              Why it matters
+            </p>
 
-                  {/* Headline — unchanged */}
+            {/* Headline — unchanged */}
+            <p
+              style={{
+                fontFamily: "Georgia, serif",
+                fontSize: "clamp(28px, 4vw, 42px)",
+                color: "#fff",
+                lineHeight: 1.3,
+                margin: 0,
+              }}
+            >
+              Gen Z has{" "}
+              <span style={{ color: "#C8F700" }}>$360B</span>
+              {" "}in spending power.
+            </p>
+
+            {/* Supporting line — unchanged */}
+            <p
+              style={{
+                fontSize: "13px",
+                color: "#888",
+                lineHeight: 1.7,
+                marginTop: "12px",
+              }}
+            >
+              They don&rsquo;t respond to ads. They respond to culture.
+              That&rsquo;s what we build.
+            </p>
+
+            {/* ── Vertical stat stack ── */}
+            <div style={{ marginTop: "2rem" }}>
+              {[
+                { value: "72%", label: "of Gen Z discover brands on social first" },
+                { value: "8 sec", label: "average Gen Z attention window" },
+                { value: "#1", label: "most influential consumer generation" },
+              ].map(({ value, label }, i) => (
+                <div
+                  key={value}
+                  style={{
+                    borderTop: i === 0 ? "1px solid #1e1e1e" : undefined,
+                    borderBottom: "1px solid #1e1e1e",
+                    paddingTop: "16px",
+                    paddingBottom: "16px",
+                  }}
+                >
                   <p
                     style={{
                       fontFamily: "Georgia, serif",
-                      fontSize: "clamp(28px, 4vw, 42px)",
-                      color: "#fff",
-                      lineHeight: 1.3,
+                      fontSize: "36px",
+                      color: "#C8F700",
+                      lineHeight: 1,
                       margin: 0,
                     }}
                   >
-                    Gen Z has{" "}
-                    <span style={{ color: "#C8F700" }}>$360B</span>
-                    {" "}in spending power.
+                    {value}
                   </p>
-
-                  {/* Supporting line — unchanged */}
                   <p
                     style={{
-                      fontSize: "13px",
-                      color: "#888",
-                      lineHeight: 1.7,
-                      marginTop: "12px",
+                      fontSize: "11px",
+                      color: "#666",
+                      lineHeight: 1.5,
+                      marginTop: "6px",
+                      maxWidth: "160px",
                     }}
                   >
-                    They don&rsquo;t respond to ads. They respond to culture.
-                    That&rsquo;s what we build.
+                    {label}
                   </p>
+                </div>
+              ))}
+            </div>
 
-                  {/* ── Vertical stat stack ── */}
-                  <div style={{ marginTop: "2rem" }}>
-                    {[
-                      { value: "72%",   label: "of Gen Z discover brands on social first" },
-                      { value: "8 sec", label: "average Gen Z attention window" },
-                      { value: "#1",    label: "most influential consumer generation" },
-                    ].map(({ value, label }, i) => (
-                      <div
-                        key={value}
-                        style={{
-                          borderTop: i === 0 ? "1px solid #1e1e1e" : undefined,
-                          borderBottom: "1px solid #1e1e1e",
-                          paddingTop: "16px",
-                          paddingBottom: "16px",
-                        }}
-                      >
-                        <p
-                          style={{
-                            fontFamily: "Georgia, serif",
-                            fontSize: "36px",
-                            color: "#C8F700",
-                            lineHeight: 1,
-                            margin: 0,
-                          }}
-                        >
-                          {value}
-                        </p>
-                        <p
-                          style={{
-                            fontSize: "11px",
-                            color: "#666",
-                            lineHeight: 1.5,
-                            marginTop: "6px",
-                            maxWidth: "160px",
-                          }}
-                        >
-                          {label}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* ── Pull-quote ── */}
-                  <div
-                    style={{
-                      borderLeft: "2px solid #C8F700",
-                      paddingLeft: "16px",
-                      marginTop: "2rem",
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontFamily: "Georgia, serif",
-                        fontSize: "14px",
-                        color: "#aaa",
-                        lineHeight: 1.7,
-                        margin: 0,
-                      }}
-                    >
-                      &ldquo;The brands that win with youth aren&rsquo;t louder
-                      &mdash; they&rsquo;re more fluent.&rdquo;
-                    </p>
-                    <p
-                      style={{
-                        fontSize: "10px",
-                        color: "#444",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.12em",
-                        marginTop: "10px",
-                      }}
-                    >
-                      &mdash; Market Orbit Research, 2024
-                    </p>
-                  </div>
+            {/* ── Pull-quote ── */}
+            <div
+              style={{
+                borderLeft: "2px solid #C8F700",
+                paddingLeft: "16px",
+                marginTop: "2rem",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "Georgia, serif",
+                  fontSize: "14px",
+                  color: "#aaa",
+                  lineHeight: 1.7,
+                  margin: 0,
+                }}
+              >
+                &ldquo;The brands that win with youth aren&rsquo;t louder
+                &mdash; they&rsquo;re more fluent.&rdquo;
+              </p>
+              <p
+                style={{
+                  fontSize: "10px",
+                  color: "#444",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  marginTop: "10px",
+                }}
+              >
+                &mdash; Market Orbit Research, 2024
+              </p>
+            </div>
           </div>
 
           {/* ── Col 2: Vertical divider ── */}
@@ -541,11 +639,16 @@ export default function ServicesPage() {
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
-      <section
+      <motion.section
         id="contact"
         className="bg-[#C8FF00] px-8 py-24 text-center text-[#080808]"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={revealViewport}
+        transition={revealTransition}
       >
         <div className="mx-auto flex max-w-[506px] flex-col items-center">
           <h2 className="max-w-[427px] font-serif text-[56px] leading-[0.88] tracking-[0.32px] sm:text-[96px]">
@@ -569,7 +672,7 @@ export default function ServicesPage() {
             </a>
           </div>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 }
