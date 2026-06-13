@@ -74,31 +74,6 @@ function ArrowMark({ active = false }: { active?: boolean }) {
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA]">
-      <nav className="mx-auto flex h-[68px] w-full max-w-[1140px] items-center justify-between border-b border-[#1A1A1A] bg-[#080808] px-5 md:px-8">
-        <Link
-          href="/"
-          className="font-serif text-2xl leading-8 tracking-[1.2px] text-[#FAFAFA]"
-        >
-          Market Orbit
-        </Link>
-        <div className="hidden items-center gap-6 text-sm leading-5 text-[#aaaaaa] lg:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item}
-              href={item === "Services" ? "/services" : "#"}
-              className={item === "Services" ? "text-[#C8FF00]" : ""}
-            >
-              {item}
-            </Link>
-          ))}
-        </div>
-        <a
-          href="#contact"
-          className="flex h-11 items-center justify-center bg-[#C8FF00] px-5 font-serif text-xs uppercase leading-4 tracking-[1.2px] text-[#080808]"
-        >
-          Start Project
-        </a>
-      </nav>
 
       <section className="relative mx-auto flex min-h-[760px] w-full max-w-[1140px] items-center justify-center overflow-hidden bg-[#080808] px-8 py-24 text-center lg:min-h-[956px]">
         <div className="absolute inset-0 opacity-30 [background:radial-gradient(circle_at_30%_20%,rgba(200,255,0,0.16),transparent_32%),linear-gradient(135deg,#222_0%,#080808_45%,#141414_100%)]" />
