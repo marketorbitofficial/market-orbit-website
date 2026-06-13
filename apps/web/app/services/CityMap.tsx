@@ -1,48 +1,94 @@
-import { useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import India from "@react-map/india";
 
-// Key geographic anchors (lon°E, lat°N)
+const MAP_SIZE = 400;
+
+type City = {
+  name: string;
+  state: string;
+  fallback: { left: number; top: number };
+  anchor: { x: number; y: number };
+};
+
+// Anchors are visual positions within each state's rendered SVG bounds. They
+// follow the reference political map, but stay inside the matching state shape.
 const cities = [
-  { name: "Mumbai",     lon: 72.87, lat: 19.08 },
-  { name: "Delhi",      lon: 77.21, lat: 28.63 },
-  { name: "Bengaluru",  lon: 77.59, lat: 12.97 },
-  { name: "Hyderabad",  lon: 78.47, lat: 17.39 },
-  { name: "Chennai",    lon: 80.28, lat: 13.09 },
-  { name: "Kolkata",    lon: 88.37, lat: 22.57 },
-  { name: "Pune",       lon: 73.85, lat: 18.52 },
-  { name: "Ahmedabad",  lon: 72.58, lat: 23.04 },
-  { name: "Jaipur",     lon: 75.79, lat: 26.91 },
-  { name: "Chandigarh", lon: 76.78, lat: 30.73 },
-  { name: "Kochi",      lon: 76.27, lat:  9.93 },
-  { name: "Bhopal",     lon: 77.41, lat: 23.26 },
-];
+  { name: "Mumbai", state: "Maharashtra", fallback: { left: 27.0, top: 59.5 }, anchor: { x: 0.16, y: 0.58 } },
+  { name: "Delhi", state: "Delhi", fallback: { left: 32.8, top: 31.0 }, anchor: { x: 0.5, y: 0.5 } },
+  { name: "Bengaluru", state: "Karnataka", fallback: { left: 34.8, top: 76.0 }, anchor: { x: 0.52, y: 0.7 } },
+  { name: "Hyderabad", state: "Telangana", fallback: { left: 39.0, top: 63.6 }, anchor: { x: 0.48, y: 0.56 } },
+  { name: "Chennai", state: "Tamil Nadu", fallback: { left: 40.0, top: 74.7 }, anchor: { x: 0.82, y: 0.42 } },
+  { name: "Kolkata", state: "West Bengal", fallback: { left: 67.4, top: 50.4 }, anchor: { x: 0.64, y: 0.72 } },
+  { name: "Pune", state: "Maharashtra", fallback: { left: 29.2, top: 61.8 }, anchor: { x: 0.28, y: 0.62 } },
+  { name: "Ahmedabad", state: "Gujarat", fallback: { left: 23.6, top: 49.6 }, anchor: { x: 0.52, y: 0.47 } },
+  { name: "Jaipur", state: "Rajasthan", fallback: { left: 28.6, top: 39.2 }, anchor: { x: 0.58, y: 0.39 } },
+  { name: "Chandigarh", state: "Chandigarh", fallback: { left: 31.5, top: 25.4 }, anchor: { x: 0.5, y: 0.5 } },
+  { name: "Kochi", state: "Kerala", fallback: { left: 31.6, top: 84.8 }, anchor: { x: 0.58, y: 0.72 } },
+  { name: "Bhopal", state: "Madhya Pradesh", fallback: { left: 36.8, top: 48.6 }, anchor: { x: 0.52, y: 0.55 } },
+] satisfies City[];
 
 export default function CityMap() {
-  // Define bounding box to map lon/lat to percentages.
-  // Note: These values might need slight tweaking depending on the exact SVG projection used in @react-map/india
-  // By adjusting these 4 values, you can perfectly calibrate the city dots onto the map.
-  const bounds = {
-    minLon: 67.5,
-    maxLon: 98.0,
-    minLat: 7.5,
-    maxLat: 37.5,
-  };
+  const mapRef = useRef<HTMLDivElement>(null);
+  const [positions, setPositions] = useState(() =>
+    Object.fromEntries(cities.map(({ name, fallback }) => [name, fallback]))
+  );
 
-  const getPos = (lon: number, lat: number) => {
-    const left = ((lon - bounds.minLon) / (bounds.maxLon - bounds.minLon)) * 100;
-    const top = ((bounds.maxLat - lat) / (bounds.maxLat - bounds.minLat)) * 100;
-    return { left: `${left}%`, top: `${top}%` };
-  };
+  useEffect(() => {
+    let frame = 0;
+
+    const placeMarkers = () => {
+      const svg = mapRef.current?.querySelector("svg");
+      const viewBox = svg?.viewBox.baseVal;
+
+      if (!svg || !viewBox?.width || !viewBox.height) return;
+
+      const nextPositions = Object.fromEntries(
+        cities.map(({ name, state, fallback, anchor }) => {
+          const path = Array.from(svg.querySelectorAll("path")).find((item) =>
+            item.id.startsWith(`${state}-`)
+          );
+
+          if (!(path instanceof SVGGraphicsElement)) {
+            return [name, fallback];
+          }
+
+          const box = path.getBBox();
+          const x = box.x + box.width * anchor.x;
+          const y = box.y + box.height * anchor.y;
+
+          return [
+            name,
+            {
+              left: ((x - viewBox.x) / viewBox.width) * 100,
+              top: ((y - viewBox.y) / viewBox.height) * 100,
+            },
+          ];
+        })
+      );
+
+      setPositions(nextPositions);
+    };
+
+    frame = window.requestAnimationFrame(() => {
+      frame = window.requestAnimationFrame(placeMarkers);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   return (
-    <div className="relative w-full max-w-lg mx-auto select-none" aria-hidden="true">
+    <div
+      ref={mapRef}
+      className="relative mx-auto aspect-square w-full max-w-[400px] select-none [&_.map]:h-full [&_.map]:w-full [&_svg]:h-full [&_svg]:w-full"
+      aria-hidden="true"
+    >
       {/* 
         Using the @react-map/india package as requested. 
         It provides a highly accurate state-by-state interactive map.
       */}
       <India
         type="select-single"
-        size={400}
+        size={MAP_SIZE}
         mapColor="#0d0d0d"
         strokeColor="#2c2c2c"
         strokeWidth={1}
@@ -53,15 +99,16 @@ export default function CityMap() {
         hintTextColor="#000000"
       />
 
-      {/* Overlay city dots dynamically scaled to the container */}
+      {/* Overlay city dots in the same square plane as the SVG map */}
       <div className="absolute inset-0 pointer-events-none">
-        {cities.map(({ name, lon, lat }, i) => {
-          const { left, top } = getPos(lon, lat);
+        {cities.map(({ name }, i) => {
+          const { left, top } = positions[name];
+
           return (
             <div
               key={name}
               className="absolute transform -translate-x-1/2 -translate-y-1/2"
-              style={{ left, top }}
+              style={{ left: `${left}%`, top: `${top}%` }}
             >
               <div className="relative">
                 <div
