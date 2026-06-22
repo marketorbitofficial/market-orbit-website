@@ -88,8 +88,8 @@ function AnimatedStat({ value, label, delay }: StatItem & { delay: number }) {
 // ── Exported section ──────────────────────────────────────────────────────────
 export default function Stats({ stats }: { stats: StatItem[] }) {
   return (
-    <section className="bg-black border-t border-zinc-900/60 py-24 px-6 md:px-12 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col items-center text-center gap-12">
+    <section className="relative overflow-hidden border-t border-zinc-900/60 bg-black px-4 py-20 sm:px-6 md:px-12 md:py-24">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 text-center">
 
         {/* Header */}
         <div className="max-w-xl">
@@ -105,12 +105,12 @@ export default function Stats({ stats }: { stats: StatItem[] }) {
         </div>
 
         {/* Stats grid */}
-        <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-y-12 items-center mt-6">
+        <div className="mt-6 grid w-full grid-cols-1 items-center gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-y-12">
           {stats.map((stat, i) => (
             <div
               key={i}
-              className={`${i < 3 ? "lg:border-r lg:border-zinc-900" : ""} ${
-                i % 2 === 0 ? "border-r border-zinc-900 lg:border-r-0" : ""
+              className={`w-full ${i < 3 ? "lg:border-r lg:border-zinc-900" : ""} ${
+                i % 2 === 0 ? "sm:border-r sm:border-zinc-900 lg:border-r-0" : ""
               }`}
             >
               <AnimatedStat {...stat} delay={i * 100} />

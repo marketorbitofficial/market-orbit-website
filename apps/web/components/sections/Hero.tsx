@@ -74,7 +74,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[calc(100vh-76px)] flex flex-col justify-center items-center py-24 px-6 md:px-12 overflow-hidden">
+    <section className="relative flex min-h-[calc(100vh-76px)] flex-col items-center justify-center overflow-hidden px-4 py-20 sm:px-6 md:px-12 md:py-24">
 
       {/* ── Animated dot-grid background ─────────────────────────────────── */}
       <div
@@ -94,7 +94,7 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-lime-orbit/[0.04] rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[500px] h-[500px] bg-lime-orbit/[0.04] rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto text-center z-10 flex flex-col items-center gap-6">
+      <div className="z-10 mx-auto flex w-full max-w-5xl flex-col items-center gap-5 px-1 text-center sm:gap-6 sm:px-0">
 
         {/* ── Badge ──────────────────────────────────────────────────────── */}
         <div
@@ -106,7 +106,7 @@ export default function Hero() {
 
         {/* ── Main Headline ──────────────────────────────────────────────── */}
         <h1
-          className="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter uppercase leading-[0.95] text-white select-none"
+          className="mx-auto max-w-4xl select-none text-4xl font-extrabold uppercase leading-[0.95] tracking-tighter text-white sm:text-6xl md:text-8xl"
         >
           {/* Line 1 */}
           <span
@@ -152,7 +152,7 @@ export default function Hero() {
 
         {/* ── Subtitle ───────────────────────────────────────────────────── */}
         <p
-          className="hero-animate max-w-xl text-zinc-400 text-sm sm:text-base md:text-lg font-medium leading-relaxed mt-2"
+          className="hero-animate mx-auto mt-2 max-w-xl text-sm font-medium leading-relaxed text-zinc-400 sm:text-base md:text-lg"
           style={{ animationDelay: "0.65s" }}
         >
           Precision marketing engineered for brands that want to lead.
@@ -160,18 +160,18 @@ export default function Hero() {
 
         {/* ── Buttons ────────────────────────────────────────────────────── */}
         <div
-          className="hero-animate flex flex-row items-center gap-6 mt-4"
+          className="hero-animate mx-auto mt-4 flex flex-col items-center gap-3 sm:flex-row sm:gap-6"
           style={{ animationDelay: "0.8s" }}
         >
           <Link
             href="/contact"
-            className="px-6 py-3.5 bg-lime-orbit text-black font-black text-xs uppercase tracking-widest hover:bg-white hover:shadow-[0_0_30px_rgba(191,255,0,0.45)] transition-all duration-300"
+            className="inline-flex w-full items-center justify-center bg-lime-orbit px-6 py-3.5 text-xs font-black uppercase tracking-widest text-black transition-all duration-300 hover:bg-white hover:shadow-[0_0_30px_rgba(191,255,0,0.45)] sm:w-auto"
           >
             Book a free call
           </Link>
           <Link
             href="/services"
-            className="text-xs font-black uppercase tracking-widest text-zinc-400 hover:text-white transition-colors duration-300 flex items-center gap-2"
+            className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-zinc-400 transition-colors duration-300 hover:text-white"
           >
             See our work
             <span className="text-sm font-sans">↓</span>
@@ -180,7 +180,7 @@ export default function Hero() {
 
         {/* ── Infinite Marquee "Trusted By" ──────────────────────────────── */}
         <div
-          className="hero-animate mt-20 w-full max-w-2xl border-t border-zinc-900/60 pt-8"
+          className="hero-animate mt-16 w-full max-w-2xl border-t border-zinc-900/60 pt-8 sm:mt-20"
           style={{ animationDelay: "1s" }}
         >
           <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-600 mb-6 font-mono text-center">
