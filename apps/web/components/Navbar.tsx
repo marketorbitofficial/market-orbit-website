@@ -10,7 +10,7 @@ const navLinks = [
 
 export default function Navbar() {
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-brand-border bg-brand-black/95 backdrop-blur">
+    <nav className="fixed left-0 right-0 top-0 z-50  border-b border-brand-border bg-brand-black/90 backdrop-blur">
       <div className="mx-auto flex h-[62px] max-w-7xl items-center justify-between gap-8 px-6">
         <a
           href="/"
@@ -23,11 +23,10 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className={`whitespace-nowrap text-[13px] transition-colors ${
-                link.href === "/why"
-                  ? "text-brand-yellow"
-                  : "text-[#a0a0a0] hover:text-[#f5f5f5]"
-              }`}
+              className={`whitespace-nowrap text-[13px] transition-colors ${link.href === "/why"
+                ? "text-brand-yellow"
+                : "text-[#a0a0a0] hover:text-[#f5f5f5]"
+                }`}
             >
               {link.label}
             </a>
