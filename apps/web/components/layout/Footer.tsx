@@ -17,14 +17,21 @@ export default function Footer() {
             The leading youth marketing agency in Central India. Bridging the gap between ambitious brands and the Gen-Z ecosystem.
           </p>
           {/* Social Links */}
-          <div className="flex items-center gap-4 mt-2">
-            {["Instagram", "LinkedIn", "Twitter", "Behance"].map((social) => (
+          <div className="grid grid-cols-2 gap-y-3 gap-x-6 mt-4 w-fit">
+            {[
+              { name: "Instagram", href: "#instagram" },
+              { name: "LinkedIn", href: "https://www.linkedin.com/company/cdfindia/" },
+              { name: "Twitter", href: "#twitter" },
+              { name: "Behance", href: "#behance" }
+            ].map((social) => (
               <a
-                key={social}
-                href={`#${social.toLowerCase()}`}
+                key={social.name}
+                href={social.href}
+                target={social.href.startsWith("http") ? "_blank" : undefined}
+                rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-lime-orbit hover:text-glow transition-all duration-300"
               >
-                {social}
+                {social.name}
               </a>
             ))}
           </div>
