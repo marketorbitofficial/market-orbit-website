@@ -11,7 +11,7 @@ const stats = [
 
 export default function Home() {
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="min-h-screen overflow-x-hidden bg-black text-white">
       <Hero />
       <Stats stats={stats} />
     </div>
