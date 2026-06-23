@@ -10,14 +10,14 @@ import OffersAccordion from "./OffersAccordion";
 
 const services = [
   {
-    title: "Youth Marketing",
+    title: "Content Marketing",
     status: "Featured",
     description:
-      "Navigating Gen Z and Alpha with authentic engagement, campus activations and culture-first content.",
+      "Building brand authority with strategic content, digital campaigns and audience-first messaging.",
     deliverables: [
-      "Campus Activations",
-      "Gen Z Content Strategy",
-      "Ambassador Programs",
+      "Content Strategy",
+      "Campaign Planning",
+      "Brand Messaging",
     ],
     process: ["01 Brief", "02 Strategy", "03 Execution"],
   },
@@ -63,18 +63,18 @@ const services = [
 const steps = [
   ["Brief", "Understand goals.", "30 min discovery call"],
   ["Strategy", "Map the plan.", "5-day turnaround"],
-  ["Execution", "Go live fast.", "Campus-ready assets"],
+  ["Execution", "Go live fast.", "Market-ready assets"],
   ["Results", "Measure impact.", "Live reporting dashboard"],
 ];
 
 const tickerItems = [
-  "Gen Z Marketing",
-  "Campus Activation",
-  "500+ Touchpoints",
-  "Creator Campaigns",
+  "Content Marketing",
+  "Digital Campaigns",
+  "500+ Campaign Touchpoints",
+  "Performance Marketing",
   "12 Cities Active",
-  "Meme Marketing",
-  "Culture-First Strategy",
+  "Brand Strategy",
+  "Market Research",
 ];
 
 const fadeUp = {
@@ -128,13 +128,13 @@ export default function ServicesPage() {
           animate="visible"
           transition={{ ...revealTransition, delay: 0.08 }}
         >
-          <Kicker>Youth Marketing</Kicker>
+          <Kicker>Content Marketing</Kicker>
           <h1 className="font-serif text-[64px] leading-[0.92] tracking-[0.32px] text-[#FAFAFA] sm:text-[96px]">
-            Services that move culture
+            Services that move brands
           </h1>
           <p className="max-w-[408px] pb-7 pt-3 text-[15px] leading-6 text-[#999999]">
-            We design campaigns that meet young audiences where they already
-            are: campus, creators, communities and social feeds.
+            We design campaigns that meet customers where they already
+            are: search, social, content platforms and trusted communities.
           </p>
           <a
             href="#services"
@@ -212,11 +212,11 @@ export default function ServicesPage() {
             <div className="mx-auto box-border flex w-full max-w-[505px] flex-col items-center gap-3">
               <Kicker>Services</Kicker>
               <h2 className="max-w-full break-words font-serif text-[38px] leading-[1] tracking-[0.32px] text-[#FAFAFA] sm:text-[60px] sm:leading-[0.95]">
-                Built for youth-first growth.
+                Built for brand-first growth.
               </h2>
               <p className="max-w-[448px] pt-3 text-[15px] leading-6 text-[#999999]">
                 Strategy, activation, content and reporting for brands that
-                need to be understood by the next generation.
+                need to be discovered, understood and chosen by the right customers.
               </p>
 
               {/* ── Brand keyword cloud ── */}
@@ -281,7 +281,7 @@ export default function ServicesPage() {
                   marginBottom: "20px",
                 }}
               >
-                Campus presence across India
+                Market presence across India
               </p>
               <CityMap />
             </div>
@@ -399,12 +399,12 @@ export default function ServicesPage() {
               <div className="mt-3 grid gap-8 sm:grid-cols-2">
                 <div className="space-y-6">
                   <h2 className="font-serif text-2xl font-bold leading-8 text-[#FAFAFA]">
-                    We speak the culture, we do not translate it.
+                    We understand the market, then build for it.
                   </h2>
                   <p className="text-sm leading-[23px] text-[#999999]">
-                    From campus activations to meme marketing, we build
-                    authentic connections between brands and the most
-                    influential generation of consumers.
+                    From content systems to performance campaigns, we build
+                    authentic connections between brands and the customers
+                    most likely to act.
                   </p>
                 </div>
                 <StatsBlock />
@@ -495,9 +495,9 @@ export default function ServicesPage() {
                 margin: 0,
               }}
             >
-              Gen Z has{" "}
-              <span style={{ color: "#C8F700" }}>$360B</span>
-              {" "}in spending power.
+              Customers reward{" "}
+              <span style={{ color: "#C8F700" }}>relevance</span>
+              {" "}over noise.
             </p>
 
             {/* Supporting line — unchanged */}
@@ -509,16 +509,16 @@ export default function ServicesPage() {
                 marginTop: "12px",
               }}
             >
-              They don&rsquo;t respond to ads. They respond to culture.
-              That&rsquo;s what we build.
+              They don&rsquo;t respond to generic ads. They respond to useful,
+              timely messages. That&rsquo;s what we build.
             </p>
 
             {/* ── Vertical stat stack ── */}
             <div style={{ marginTop: "2rem" }}>
               {[
-                { value: "72%", label: "of Gen Z discover brands on social first" },
-                { value: "8 sec", label: "average Gen Z attention window" },
-                { value: "#1", label: "most influential consumer generation" },
+                { value: "72%", label: "of buyers research brands before reaching out" },
+                { value: "8 sec", label: "average time to earn attention" },
+                { value: "#1", label: "reason customers choose a brand is relevance" },
               ].map(({ value, label }, i) => (
                 <div
                   key={value}
@@ -572,8 +572,8 @@ export default function ServicesPage() {
                   margin: 0,
                 }}
               >
-                &ldquo;The brands that win with youth aren&rsquo;t louder
-                &mdash; they&rsquo;re more fluent.&rdquo;
+                &ldquo;The brands that win in-market aren&rsquo;t louder
+                &mdash; they&rsquo;re more relevant.&rdquo;
               </p>
               <p
                 style={{
@@ -606,7 +606,7 @@ export default function ServicesPage() {
       >
         <div className="mx-auto box-border flex w-full max-w-[506px] flex-col items-center">
           <h2 className="max-w-[427px] font-serif text-[56px] leading-[0.88] tracking-[0.32px] sm:text-[96px]">
-            Ready to orbit culture?
+            Ready to orbit growth?
           </h2>
           <p className="pt-6 text-base leading-6 text-[#333333]">
             Bring us the brief. We will bring the audience, plan and proof.

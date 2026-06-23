@@ -71,7 +71,7 @@ export function InternshipSection() {
                 maxWidth: "420px",
               }}
             >
-              Structured programs for students and fresh graduates who want real
+              Structured programs for early-career talent and fresh graduates who want real
               technology experience — not coffee fetching.
             </p>
 

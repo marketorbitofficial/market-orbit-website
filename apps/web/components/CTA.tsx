@@ -33,7 +33,7 @@ export default function CTA() {
         viewport={{ once: true, amount: 0.4 }}
       >
         <p className="mb-8 text-[10px] uppercase tracking-widest2 text-brand-yellow">
-          LET&apos;S BUILD CULTURE
+          LET&apos;S BUILD GROWTH
         </p>
         <motion.h2
           className="mx-auto max-w-3xl font-serif text-4xl leading-tight text-white md:text-6xl"

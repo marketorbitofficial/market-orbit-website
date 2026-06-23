@@ -31,10 +31,10 @@ export default function ContactInfo() {
         </p>
         <h2 className="text-white text-3xl lg:text-4xl font-bold leading-tight">
           Let's talk<br />
-          <span className="text-[#C6FF00]">culture.</span>
+          <span className="text-[#C6FF00]">growth.</span>
         </h2>
         <p className="text-white/40 text-sm mt-3 leading-relaxed max-w-xs">
-          Whether you have a brief or just an idea — we're ready to move fast and make noise.
+          Whether you have a brief or just an idea — we're ready to move fast and build momentum.
         </p>
       </div>
 

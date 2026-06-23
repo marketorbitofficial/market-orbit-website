@@ -14,7 +14,7 @@ export default function Footer() {
             </span>
           </Link>
           <p className="text-sm text-zinc-500 leading-relaxed max-w-xs">
-            The leading youth marketing agency in Central India. Bridging the gap between ambitious brands and the Gen-Z ecosystem.
+            A full-service marketing agency in Central India. Bridging the gap between ambitious brands and measurable market growth.
           </p>
           {/* Social Links */}
           <div className="grid grid-cols-2 gap-y-3 gap-x-6 mt-4 w-fit">
@@ -44,9 +44,9 @@ export default function Footer() {
           </h4>
           <ul className="flex flex-col gap-3 text-sm">
             {[
-              "Youth Marketing",
-              "Influencer Marketing",
-              "Campus Activations",
+              "Content Marketing",
+              "Performance Marketing",
+              "Digital Campaigns",
               "Social Media Management",
               "Brand Strategy & Design",
             ].map((service) => (

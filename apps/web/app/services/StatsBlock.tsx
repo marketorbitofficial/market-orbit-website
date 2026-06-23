@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const stats = [
   {
     value: "500+",
-    label: "Campus Touchpoints",
+    label: "Campaign Touchpoints",
     fill: 82,
     note: "vs 310 last year",
     delay: 0,

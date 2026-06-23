@@ -12,7 +12,7 @@ interface CTAProps {
 
 export default function CTA({
   title = "Want to be part of this Orbit?",
-  subtitle = "We are always scaling our network of creators, campaign leads, and campus ambassadors. Drop us a line and let's explore opportunities.",
+  subtitle = "We are always scaling our network of strategists, campaign leads, and brand partners. Drop us a line and let's explore opportunities.",
   primaryBtnText = "Join the team",
   primaryBtnHref = "#contact",
   secondaryBtnText = "Talk directly",
