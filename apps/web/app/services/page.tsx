@@ -101,9 +101,9 @@ export default function ServicesPage() {
         className="relative mx-auto box-border flex min-h-[640px] w-full max-w-full items-center justify-center overflow-hidden bg-[#080808] px-4 py-20 text-center sm:px-8 lg:min-h-[956px] lg:max-w-[1140px] lg:py-24"
       >
         {/* User-uploaded background image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-          style={{ backgroundImage: "url('/services-hero-bg.jpg')" }} 
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/services-hero-bg.jpg')" }}
         />
         {/* Dark overlay for text readability and blending */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#080808]/90 via-[#080808]/60 to-[#080808]" />
@@ -274,16 +274,15 @@ export default function ServicesPage() {
                   return (
                     <motion.div
                       key={service.title}
-                      className={`border-b border-[#222222] transition-colors duration-300 ${
-                        isOpen ? "bg-[#141414]" : "bg-transparent"
-                      }`}
+                      className={`border-b border-[#222222] transition-colors duration-300 ${isOpen ? "bg-[#141414]" : "bg-transparent"
+                        }`}
                       whileHover={
                         isOpen
                           ? undefined
                           : {
-                              backgroundColor: "rgba(255,255,255,0.02)",
-                              borderColor: "rgba(194,255,0,.15)",
-                            }
+                            backgroundColor: "rgba(255,255,255,0.02)",
+                            borderColor: "rgba(194,255,0,.15)",
+                          }
                       }
                     >
                       <button
@@ -309,9 +308,8 @@ export default function ServicesPage() {
                           </h3>
                         </div>
                         <span
-                          className={`inline-block text-base leading-none transition duration-300 ${
-                            isOpen ? "text-[#C8FF00]" : "text-[#555]"
-                          }`}
+                          className={`inline-block text-base leading-none transition duration-300 ${isOpen ? "text-[#C8FF00]" : "text-[#555]"
+                            }`}
                           style={{
                             transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
                           }}
