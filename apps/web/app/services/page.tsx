@@ -67,6 +67,16 @@ const steps = [
   ["Results", "Measure impact.", "Live reporting dashboard"],
 ];
 
+const tickerItems = [
+  "Gen Z Marketing",
+  "Campus Activation",
+  "500+ Touchpoints",
+  "Creator Campaigns",
+  "12 Cities Active",
+  "Meme Marketing",
+  "Culture-First Strategy",
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
@@ -145,40 +155,53 @@ export default function ServicesPage() {
         viewport={{ once: true, amount: 0.4 }}
         transition={revealTransition}
       >
-        <div className="marquee-track py-[10px]">
-          {[0, 1].map((dupe) => (
-            <span
-              key={dupe}
-              className="flex shrink-0 items-center"
-              aria-hidden={dupe === 1 ? "true" : undefined}
-            >
-              {[
-                "Gen Z Marketing",
-                "Campus Activation",
-                "500+ Touchpoints",
-                "Creator Campaigns",
-                "12 Cities Active",
-                "Meme Marketing",
-                "Culture-First Strategy",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="flex items-center whitespace-nowrap px-6"
-                  style={{
-                    color: "#C8F700",
-                    fontSize: "11px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.12em",
-                    fontWeight: 500,
-                  }}
-                >
-                  {item}
-                  <span className="mx-6 text-[#C8F700] opacity-60">◆</span>
-                </span>
-              ))}
-            </span>
-          ))}
+        <div className="flex h-12 w-full items-center overflow-hidden">
+          <div className="services-marquee-track flex w-max min-w-max flex-nowrap items-center whitespace-nowrap">
+            {[0, 1].map((dupe) => (
+              <span
+                key={dupe}
+                className="flex shrink-0 flex-nowrap items-center"
+                aria-hidden={dupe === 1 ? "true" : undefined}
+              >
+                {tickerItems.map((item) => (
+                  <span
+                    key={item}
+                    className="flex shrink-0 items-center whitespace-nowrap px-5"
+                    style={{
+                      color: "#C8F700",
+                      fontSize: "11px",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.12em",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {item}
+                    <span className="mx-5 shrink-0 text-[#C8F700] opacity-60">◆</span>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
         </div>
+        <style>{`
+          .services-marquee-track {
+            animation: services-marquee-scroll 28s linear infinite;
+          }
+
+          .services-marquee-track:hover {
+            animation-play-state: paused;
+          }
+
+          @keyframes services-marquee-scroll {
+            from {
+              transform: translateX(0);
+            }
+
+            to {
+              transform: translateX(-50%);
+            }
+          }
+        `}</style>
       </motion.div>
 
       <div
@@ -188,7 +211,7 @@ export default function ServicesPage() {
           <section className="box-border w-full max-w-full bg-[#080808] px-4 py-20 text-center sm:px-8 lg:py-24">
             <div className="mx-auto box-border flex w-full max-w-[505px] flex-col items-center gap-3">
               <Kicker>Services</Kicker>
-              <h2 className="font-serif text-[44px] leading-[0.95] tracking-[0.32px] text-[#FAFAFA] sm:text-[60px]">
+              <h2 className="max-w-full break-words font-serif text-[38px] leading-[1] tracking-[0.32px] text-[#FAFAFA] sm:text-[60px] sm:leading-[0.95]">
                 Built for youth-first growth.
               </h2>
               <p className="max-w-[448px] pt-3 text-[15px] leading-6 text-[#999999]">
