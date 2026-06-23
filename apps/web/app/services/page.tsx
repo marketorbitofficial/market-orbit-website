@@ -8,16 +8,6 @@ import CityMap from "./CityMap";
 import FaqAccordion from "./FaqAccordion";
 import OffersAccordion from "./OffersAccordion";
 
-const navItems = [
-  "Home",
-  "About",
-  "Services",
-  "Case Studies",
-  "Insights",
-  "Marketplace",
-  "Contact",
-];
-
 const services = [
   {
     title: "Youth Marketing",
@@ -77,15 +67,22 @@ const steps = [
   ["Results", "Measure impact.", "Live reporting dashboard"],
 ];
 
+const tickerItems = [
+  "Gen Z Marketing",
+  "Campus Activation",
+  "500+ Touchpoints",
+  "Creator Campaigns",
+  "12 Cities Active",
+  "Meme Marketing",
+  "Culture-First Strategy",
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
 };
 
 const revealTransition = { duration: 0.7, ease: "easeOut" as const };
-
-const revealViewport = { once: true, amount: 0.2 };
-
 
 function Kicker({ children }: { children: ReactNode }) {
   return (
@@ -109,15 +106,9 @@ export default function ServicesPage() {
   const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(0);
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA]">
-
+    <main className="min-h-screen w-full overflow-x-hidden bg-[#0A0A0A] text-[#FAFAFA]">
       <motion.section
-        className="relative mx-auto flex min-h-[760px] w-full max-w-[1140px] items-center justify-center overflow-hidden bg-[#080808] px-8 py-24 text-center lg:min-h-[956px]"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={revealViewport}
-        transition={revealTransition}
+        className="relative mx-auto box-border flex min-h-[640px] w-full max-w-full items-center justify-center overflow-hidden bg-[#080808] px-4 py-20 text-center sm:px-8 lg:min-h-[956px] lg:max-w-[1140px] lg:py-24"
       >
         {/* User-uploaded background image */}
         <div
@@ -131,11 +122,10 @@ export default function ServicesPage() {
 
 
         <motion.div
-          className="relative z-10 flex max-w-[448px] flex-col items-center gap-3"
+          className="relative z-10 box-border flex w-full max-w-[448px] flex-col items-center gap-3"
           variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
+          initial="visible"
+          animate="visible"
           transition={{ ...revealTransition, delay: 0.08 }}
         >
           <Kicker>Youth Marketing</Kicker>
@@ -165,55 +155,63 @@ export default function ServicesPage() {
         viewport={{ once: true, amount: 0.4 }}
         transition={revealTransition}
       >
-        <div className="marquee-track py-[10px]">
-          {[0, 1].map((dupe) => (
-            <span
-              key={dupe}
-              className="flex shrink-0 items-center"
-              aria-hidden={dupe === 1 ? "true" : undefined}
-            >
-              {[
-                "Gen Z Marketing",
-                "Campus Activation",
-                "500+ Touchpoints",
-                "Creator Campaigns",
-                "12 Cities Active",
-                "Meme Marketing",
-                "Culture-First Strategy",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="flex items-center whitespace-nowrap px-6"
-                  style={{
-                    color: "#C8F700",
-                    fontSize: "11px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.12em",
-                    fontWeight: 500,
-                  }}
-                >
-                  {item}
-                  <span className="mx-6 text-[#C8F700] opacity-60">◆</span>
-                </span>
-              ))}
-            </span>
-          ))}
+        <div className="flex h-12 w-full items-center overflow-hidden">
+          <div className="services-marquee-track flex w-max min-w-max flex-nowrap items-center whitespace-nowrap">
+            {[0, 1].map((dupe) => (
+              <span
+                key={dupe}
+                className="flex shrink-0 flex-nowrap items-center"
+                aria-hidden={dupe === 1 ? "true" : undefined}
+              >
+                {tickerItems.map((item) => (
+                  <span
+                    key={item}
+                    className="flex shrink-0 items-center whitespace-nowrap px-5"
+                    style={{
+                      color: "#C8F700",
+                      fontSize: "11px",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.12em",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {item}
+                    <span className="mx-5 shrink-0 text-[#C8F700] opacity-60">◆</span>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
         </div>
+        <style>{`
+          .services-marquee-track {
+            animation: services-marquee-scroll 28s linear infinite;
+          }
+
+          .services-marquee-track:hover {
+            animation-play-state: paused;
+          }
+
+          @keyframes services-marquee-scroll {
+            from {
+              transform: translateX(0);
+            }
+
+            to {
+              transform: translateX(-50%);
+            }
+          }
+        `}</style>
       </motion.div>
 
-      <motion.div
-        className="mx-auto grid w-full max-w-[1140px] border-t border-[#222222] lg:grid-cols-2"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={revealViewport}
-        transition={revealTransition}
+      <div
+        className="mx-auto grid w-full max-w-full border-t border-[#222222] lg:max-w-[1140px] lg:grid-cols-2"
       >
-        <aside className="border-[#222222] lg:border-r">
-          <section className="bg-[#080808] px-8 py-24 text-center">
-            <div className="mx-auto flex max-w-[505px] flex-col items-center gap-3">
+        <aside className="box-border w-full max-w-full border-[#222222] lg:border-r">
+          <section className="box-border w-full max-w-full bg-[#080808] px-4 py-20 text-center sm:px-8 lg:py-24">
+            <div className="mx-auto box-border flex w-full max-w-[505px] flex-col items-center gap-3">
               <Kicker>Services</Kicker>
-              <h2 className="font-serif text-[44px] leading-[0.95] tracking-[0.32px] text-[#FAFAFA] sm:text-[60px]">
+              <h2 className="max-w-full break-words font-serif text-[38px] leading-[1] tracking-[0.32px] text-[#FAFAFA] sm:text-[60px] sm:leading-[0.95]">
                 Built for youth-first growth.
               </h2>
               <p className="max-w-[448px] pt-3 text-[15px] leading-6 text-[#999999]">
@@ -272,8 +270,8 @@ export default function ServicesPage() {
           </section>
 
           {/* ── City presence map ── */}
-          <section className="bg-[#050505] px-8 py-14">
-            <div className="mx-auto max-w-[505px]">
+          <section className="box-border w-full max-w-full bg-[#050505] px-4 py-14 sm:px-8">
+            <div className="mx-auto box-border w-full max-w-[505px]">
               <p
                 style={{
                   fontSize: "9px",
@@ -289,8 +287,8 @@ export default function ServicesPage() {
             </div>
           </section>
 
-          <section id="services" className="bg-[#0F0F0F] px-8 py-24">
-            <div className="mx-auto max-w-[505px]">
+          <section id="services" className="box-border w-full max-w-full bg-[#0F0F0F] px-4 py-20 sm:px-8 lg:py-24">
+            <div className="mx-auto box-border w-full max-w-[505px]">
               <Kicker>All Services</Kicker>
               <div className="mt-6 border-t border-[#222222]">
                 {services.map((service, index) => {
@@ -317,15 +315,17 @@ export default function ServicesPage() {
                             current === index ? null : index
                           )
                         }
-                        className={`flex w-full items-center justify-between text-left ${isOpen ? "px-8 pb-0 pt-8" : "min-h-[72px] py-[21.5px]"
-                          }`}
+                        className={`box-border flex w-full items-center justify-between text-left ${
+                          isOpen ? "px-4 pb-0 pt-8 sm:px-8" : "min-h-[72px] py-[21.5px]"
+                        }`}
                         aria-expanded={isOpen}
                       >
-                        <div className="flex items-center gap-6">
+                        <div className="flex min-w-0 items-center gap-4 sm:gap-6">
                           <ArrowMark active={isOpen} />
                           <h3
-                            className={`font-serif text-xl font-bold leading-7 transition-colors duration-300 ${isOpen ? "text-[#C8FF00]" : "text-[#FAFAFA]"
-                              }`}
+                            className={`font-serif text-lg font-bold leading-7 transition-colors duration-300 sm:text-xl ${
+                              isOpen ? "text-[#C8FF00]" : "text-[#FAFAFA]"
+                            }`}
                           >
                             {service.title}
                           </h3>
@@ -352,7 +352,7 @@ export default function ServicesPage() {
                             transition={{ duration: 0.36, ease: "easeOut" }}
                             className="overflow-hidden"
                           >
-                            <div className="px-8 pb-8 pt-6">
+                            <div className="box-border w-full max-w-full px-4 pb-8 pt-6 sm:px-8">
                               <p className="text-sm leading-5 text-[#999999]">
                                 {service.description}
                               </p>
@@ -392,9 +392,9 @@ export default function ServicesPage() {
           </section>
         </aside>
 
-        <div>
-          <section id="overview" className="bg-[#080808] px-8 py-24">
-            <div className="mx-auto max-w-[506px]">
+        <div className="box-border w-full max-w-full">
+          <section id="overview" className="box-border w-full max-w-full bg-[#080808] px-4 py-20 sm:px-8 lg:py-24">
+            <div className="mx-auto box-border w-full max-w-[506px]">
               <Kicker>Overview</Kicker>
               <div className="mt-3 grid gap-8 sm:grid-cols-2">
                 <div className="space-y-6">
@@ -412,15 +412,15 @@ export default function ServicesPage() {
             </div>
           </section>
 
-          <section className="bg-[#0F0F0F] px-8 py-24">
-            <div className="mx-auto max-w-[506px]">
+          <section className="box-border w-full max-w-full bg-[#0F0F0F] px-4 py-20 sm:px-8 lg:py-24">
+            <div className="mx-auto box-border w-full max-w-[506px]">
               <Kicker>What We Offer</Kicker>
               <OffersAccordion />
             </div>
           </section>
 
-          <section className="bg-[#080808] px-8 py-24">
-            <div className="mx-auto max-w-[506px]">
+          <section className="box-border w-full max-w-full bg-[#080808] px-4 py-20 sm:px-8 lg:py-24">
+            <div className="mx-auto box-border w-full max-w-[506px]">
               <Kicker>How We Work</Kicker>
               <div className="step-grid mt-6 grid gap-6 sm:grid-cols-4">
                 {steps.map(([title, description, subtitle]) => (
@@ -453,37 +453,25 @@ export default function ServicesPage() {
           </section>
 
           {/* ── Testimonial quote block ── */}
-          <section className="bg-[#080808] px-8 py-16">
-            <div className="mx-auto max-w-[506px]">
+          <section className="box-border w-full max-w-full bg-[#080808] px-4 py-16 sm:px-8">
+            <div className="mx-auto box-border w-full max-w-[506px]">
               <TestimonialBlock />
             </div>
           </section>
         </div>
-      </motion.div>
+      </div>
       {/* ── END outer 2-col grid ── */}
 
       {/* ── FAQ section: full-width 3-col grid ── */}
-      <motion.section
-        className="bg-[#0F0F0F] px-8 py-24"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={revealViewport}
-        transition={revealTransition}
+      <section
+        className="box-border w-full max-w-full bg-[#0F0F0F] px-4 py-20 sm:px-8 lg:py-24"
       >
         <div
-          style={{
-            margin: "0 auto",
-            maxWidth: "1140px",
-            display: "grid",
-            gridTemplateColumns: "300px 1px 1fr",
-            gap: "0 48px",
-            alignItems: "start",
-          }}
+          className="mx-auto grid w-full max-w-[1140px] grid-cols-1 items-start gap-y-10 lg:grid-cols-[300px_1px_1fr] lg:gap-x-12 lg:gap-y-0"
         >
 
           {/* ── Col 1: Sticky editorial ── */}
-          <div style={{ position: "sticky", top: "100px", alignSelf: "start" }}>
+          <div className="box-border w-full max-w-full lg:sticky lg:top-[100px] lg:self-start">
             {/* Label */}
             <p
               style={{
@@ -602,26 +590,21 @@ export default function ServicesPage() {
           </div>
 
           {/* ── Col 2: Vertical divider ── */}
-          <div style={{ background: "#1e1e1e", width: "1px", alignSelf: "stretch" }} />
+          <div className="hidden w-px self-stretch bg-[#1e1e1e] lg:block" />
 
           {/* ── Col 3: FAQ accordion ── */}
-          <div>
+          <div className="box-border w-full max-w-full">
             <FaqAccordion />
           </div>
 
         </div>
-      </motion.section>
+      </section>
 
-      <motion.section
+      <section
         id="contact"
-        className="bg-[#C8FF00] px-8 py-24 text-center text-[#080808]"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={revealViewport}
-        transition={revealTransition}
+        className="box-border w-full max-w-full bg-[#C8FF00] px-4 py-20 text-center text-[#080808] sm:px-8 lg:py-24"
       >
-        <div className="mx-auto flex max-w-[506px] flex-col items-center">
+        <div className="mx-auto box-border flex w-full max-w-[506px] flex-col items-center">
           <h2 className="max-w-[427px] font-serif text-[56px] leading-[0.88] tracking-[0.32px] sm:text-[96px]">
             Ready to orbit culture?
           </h2>
@@ -643,7 +626,7 @@ export default function ServicesPage() {
             </a>
           </div>
         </div>
-      </motion.section>
+      </section>
     </main>
   );
 }
