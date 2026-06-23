@@ -3,12 +3,12 @@ import React from "react";
 const INFO_ITEMS = [
   {
     label: "Headquarters",
-    lines: ["404 Orbit Tower,", "Vijay Nagar, Indore, MP", "452010"],
+    lines: ["KH. NO.276, Ground Floor,", "Prahalad Vihar,", "Delhi - 110042"],
   },
   {
     label: "Email",
-    lines: ["hello@marketorbit.in"],
-    href: "mailto:hello@marketorbit.in",
+    lines: ["corporate@marketorbit.in"],
+    href: "mailto:corporate@marketorbit.in",
   },
   {
     label: "Phone",
@@ -95,7 +95,7 @@ export default function ContactInfo() {
 
         {/* Subtle tagline */}
         <p className="text-white/20 text-[10px] tracking-widest uppercase text-center">
-          Market Orbit · Indore, India
+          Market Orbit · Delhi, India
         </p>
       </div>
     </div>
