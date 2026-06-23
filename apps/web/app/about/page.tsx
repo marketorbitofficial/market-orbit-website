@@ -163,7 +163,7 @@ function TeamCard({ member, delay }: { member: typeof team[0]; delay: number }) 
     <Reveal delay={delay}>
       {/* Perspective wrapper */}
       <div
-        className="relative h-80 cursor-pointer"
+        className="relative min-h-[20rem] cursor-pointer md:h-80"
         style={{ perspective: "1000px" }}
         onMouseEnter={() => setFlipped(true)}
         onMouseLeave={() => setFlipped(false)}
@@ -179,10 +179,10 @@ function TeamCard({ member, delay }: { member: typeof team[0]; delay: number }) 
         >
           {/* ── Front face ── */}
           <div
-            className="absolute inset-0 border border-zinc-900 rounded-2xl p-8 bg-zinc-950/40 flex flex-col items-center text-center"
+            className="absolute inset-0 flex flex-col items-center rounded-2xl border border-zinc-900 bg-zinc-950/40 p-6 text-center sm:p-8"
             style={{ backfaceVisibility: "hidden" }}
           >
-            <div className="w-24 h-24 rounded-full p-[2px] bg-zinc-900 mb-5 shadow-[0_0_20px_rgba(0,0,0,0.8)]">
+            <div className="mb-5 h-20 w-20 rounded-full bg-zinc-900 p-[2px] shadow-[0_0_20px_rgba(0,0,0,0.8)] sm:h-24 sm:w-24">
               <div
                 className={`w-full h-full rounded-full bg-gradient-to-tr ${member.gradColor} flex items-center justify-center relative overflow-hidden`}
               >
@@ -192,8 +192,8 @@ function TeamCard({ member, delay }: { member: typeof team[0]; delay: number }) 
                 </span>
               </div>
             </div>
-            <h3 className="text-lg font-bold text-white">{member.name}</h3>
-            <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-1 mb-3 font-mono">
+            <h3 className="text-lg font-bold text-white sm:text-xl">{member.name}</h3>
+            <p className="mt-1 mb-3 text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-mono">
               {member.role}
             </p>
             <p className="text-sm text-zinc-400 leading-relaxed">{member.desc}</p>
@@ -204,7 +204,7 @@ function TeamCard({ member, delay }: { member: typeof team[0]; delay: number }) 
 
           {/* ── Back face ── */}
           <div
-            className="absolute inset-0 border border-lime-orbit/30 rounded-2xl p-8 bg-black flex flex-col items-center text-center justify-between shadow-[0_0_40px_rgba(191,255,0,0.06)]"
+            className="absolute inset-0 flex flex-col items-center justify-between rounded-2xl border border-lime-orbit/30 bg-black p-6 text-center shadow-[0_0_40px_rgba(191,255,0,0.06)] sm:p-8"
             style={{
               backfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
@@ -219,7 +219,7 @@ function TeamCard({ member, delay }: { member: typeof team[0]; delay: number }) 
             </div>
 
             {/* Fun fact */}
-            <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-3 w-full">
+            <div className="w-full rounded-xl border border-zinc-800 bg-zinc-950 p-3">
               <p className="text-[10px] text-lime-orbit uppercase tracking-widest font-mono mb-1">
                 Fun fact
               </p>
@@ -265,10 +265,10 @@ export default function About() {
   }, []);
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="min-h-screen overflow-x-hidden bg-black text-white">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="relative py-32 px-6 md:px-12 flex flex-col justify-center items-center overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center overflow-hidden px-4 py-20 sm:px-6 md:px-12 md:py-32">
         <div
           className="dot-grid absolute inset-0 pointer-events-none"
           style={{
@@ -283,7 +283,7 @@ export default function About() {
         />
         <div className="absolute top-0 right-1/3 w-[500px] h-[500px] bg-lime-orbit/[0.04] rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto text-center z-10 flex flex-col items-center gap-6">
+        <div className="z-10 mx-auto flex max-w-4xl flex-col items-center gap-5 text-center sm:gap-6">
           <div
             className="hero-animate text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-lime-orbit font-mono"
             style={{ animationDelay: "0.05s" }}
@@ -291,14 +291,14 @@ export default function About() {
             [ THE AGENCY ]
           </div>
           <h1
-            className="hero-animate text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] text-white"
+            className="hero-animate text-4xl font-black uppercase leading-[0.95] tracking-tighter text-white sm:text-6xl md:text-8xl"
             style={{ animationDelay: "0.2s" }}
           >
             We Are<br />
             <span className="text-lime-orbit text-glow">Market Orbit.</span>
           </h1>
           <p
-            className="hero-animate max-w-2xl text-zinc-400 text-base sm:text-lg font-medium leading-relaxed"
+            className="hero-animate max-w-2xl text-base font-medium leading-relaxed text-zinc-400 sm:text-lg"
             style={{ animationDelay: "0.4s" }}
           >
             A Gen-Z first creative marketing agency. We bridge the gap between
@@ -309,7 +309,7 @@ export default function About() {
       </section>
 
       {/* ── Horizontal Timeline ────────────────────────────────────────────── */}
-      <section className="py-24 px-6 md:px-12 border-t border-zinc-900 bg-zinc-950/20 overflow-hidden">
+      <section className="overflow-hidden border-t border-zinc-900 bg-zinc-950/20 px-4 py-20 sm:px-6 md:px-12 md:py-24">
         <div className="max-w-6xl mx-auto">
           <Reveal className="text-center max-w-xl mx-auto mb-20">
             <div className="text-[10px] uppercase font-bold tracking-[0.3em] text-lime-orbit mb-4 font-mono">
@@ -334,11 +334,11 @@ export default function About() {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
               {timelineSteps.map((step, i) => (
                 <Reveal key={i} delay={i * 150} className="relative group">
                   {/* Year circle badge */}
-                  <div className="flex md:justify-center mb-6 relative z-10">
+                  <div className="relative z-10 mb-6 flex md:justify-center">
                     <div className="w-[72px] h-[72px] rounded-full border-2 border-zinc-800 bg-black flex items-center justify-center group-hover:border-lime-orbit group-hover:shadow-[0_0_24px_rgba(191,255,0,0.35)] transition-all duration-500">
                       <span className="text-sm font-black text-lime-orbit font-mono">
                         {step.year}
@@ -350,7 +350,7 @@ export default function About() {
                     <h3 className="text-base font-bold text-white mb-2 group-hover:text-lime-orbit transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-sm text-zinc-500 leading-relaxed max-w-xs md:mx-auto">
+                    <p className="max-w-xs text-sm leading-relaxed text-zinc-500 md:mx-auto">
                       {step.desc}
                     </p>
                   </div>
@@ -362,9 +362,9 @@ export default function About() {
       </section>
 
       {/* ── Vision & Mission ──────────────────────────────────────────────── */}
-      <section className="py-24 px-6 md:px-12 border-t border-zinc-900">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Reveal delay={0} className="border border-zinc-800 rounded-2xl p-8 md:p-12 bg-black flex flex-col justify-between hover:border-zinc-700 transition-colors duration-300 relative group overflow-hidden">
+      <section className="border-t border-zinc-900 px-4 py-20 sm:px-6 md:px-12 md:py-24">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
+          <Reveal delay={0} className="relative group flex flex-col justify-between overflow-hidden rounded-2xl border border-zinc-800 bg-black p-6 transition-colors duration-300 hover:border-zinc-700 sm:p-8 md:p-12">
             <div className="absolute top-0 right-0 w-48 h-48 bg-lime-orbit/5 rounded-full blur-3xl group-hover:bg-lime-orbit/10 transition-colors duration-700 pointer-events-none" />
             <div>
               <div className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-500 mb-8 font-mono">
@@ -380,7 +380,7 @@ export default function About() {
             </div>
           </Reveal>
 
-          <Reveal delay={120} className="border border-lime-orbit/25 bg-zinc-950/40 rounded-2xl p-8 md:p-12 flex flex-col justify-between hover:border-lime-orbit/50 transition-all duration-300 relative group overflow-hidden shadow-[0_0_40px_rgba(191,255,0,0.03)]">
+          <Reveal delay={120} className="relative group flex flex-col justify-between overflow-hidden rounded-2xl border border-lime-orbit/25 bg-zinc-950/40 p-6 shadow-[0_0_40px_rgba(191,255,0,0.03)] transition-all duration-300 hover:border-lime-orbit/50 sm:p-8 md:p-12">
             <div className="absolute top-0 right-0 w-48 h-48 bg-lime-orbit/8 rounded-full blur-3xl group-hover:bg-lime-orbit/15 transition-colors duration-700 pointer-events-none" />
             <div>
               <div className="text-[10px] uppercase font-bold tracking-[0.3em] text-lime-orbit mb-8 font-mono">
@@ -399,9 +399,9 @@ export default function About() {
       </section>
 
       {/* ── Why Market Orbit ─────────────────────────────────────────────── */}
-      <section id="why-market-orbit" className="py-24 px-6 md:px-12 border-t border-zinc-900 bg-zinc-950/10 overflow-hidden">
+      <section id="why-market-orbit" className="overflow-hidden border-t border-zinc-900 bg-zinc-950/10 px-4 py-20 sm:px-6 md:px-12 md:py-24">
         <div className="max-w-5xl mx-auto">
-          <Reveal className="text-center max-w-xl mx-auto mb-16">
+          <Reveal className="mx-auto mb-16 max-w-xl text-center">
             <div className="text-[10px] uppercase font-bold tracking-[0.3em] text-lime-orbit mb-4 font-mono">
               [ THE DIFFERENCE ]
             </div>
@@ -415,67 +415,69 @@ export default function About() {
 
           {/* Comparison table */}
           <Reveal delay={100}>
-            {/* Column headers */}
-            <div className="grid grid-cols-[1fr_auto_auto] gap-4 mb-4 px-4">
-              <div />
-              <div className="w-28 text-center">
-                <span className="text-[10px] font-black uppercase tracking-widest text-lime-orbit font-mono">
-                  Market Orbit
-                </span>
-              </div>
-              <div className="w-28 text-center">
-                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 font-mono">
-                  Others
-                </span>
-              </div>
-            </div>
-
-            {/* Feature rows */}
-            <div className="flex flex-col border border-zinc-900 rounded-2xl overflow-hidden">
-              {whyUs.map((row, i) => (
-                <div
-                  key={i}
-                  className={`grid grid-cols-[1fr_auto_auto] gap-4 items-center px-4 py-4 transition-colors duration-200 hover:bg-zinc-950/60 ${
-                    i !== whyUs.length - 1 ? "border-b border-zinc-900" : ""
-                  }`}
-                >
-                  <span className="text-sm text-zinc-300 font-medium">{row.feature}</span>
-
-                  {/* Market Orbit check */}
-                  <div className="w-28 flex justify-center">
-                    {row.us ? (
-                      <span className="w-7 h-7 rounded-full bg-lime-orbit/15 border border-lime-orbit/40 flex items-center justify-center">
-                        <svg className="w-3.5 h-3.5 text-lime-orbit" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </span>
-                    ) : (
-                      <span className="w-7 h-7 rounded-full bg-zinc-900 flex items-center justify-center">
-                        <svg className="w-3.5 h-3.5 text-zinc-700" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Others check */}
-                  <div className="w-28 flex justify-center">
-                    {row.them ? (
-                      <span className="w-7 h-7 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center">
-                        <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </span>
-                    ) : (
-                      <span className="w-7 h-7 rounded-full bg-zinc-900 flex items-center justify-center">
-                        <svg className="w-3.5 h-3.5 text-zinc-700" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                      </span>
-                    )}
-                  </div>
+            <div className="overflow-x-auto md:overflow-visible">
+              {/* Column headers */}
+              <div className="mb-4 hidden grid-cols-[1fr_auto_auto] gap-4 px-4 md:grid">
+                <div />
+                <div className="w-28 text-center">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-lime-orbit font-mono">
+                    Market Orbit
+                  </span>
                 </div>
-              ))}
+                <div className="w-28 text-center">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 font-mono">
+                    Others
+                  </span>
+                </div>
+              </div>
+
+              {/* Feature rows */}
+              <div className="flex min-w-[640px] flex-col overflow-hidden rounded-2xl border border-zinc-900 md:min-w-0">
+                {whyUs.map((row, i) => (
+                  <div
+                    key={i}
+                    className={`grid grid-cols-[1fr_auto_auto] items-center gap-4 px-4 py-4 transition-colors duration-200 hover:bg-zinc-950/60 ${
+                      i !== whyUs.length - 1 ? "border-b border-zinc-900" : ""
+                    }`}
+                  >
+                    <span className="text-sm font-medium text-zinc-300">{row.feature}</span>
+
+                    {/* Market Orbit check */}
+                    <div className="flex w-28 justify-center">
+                      {row.us ? (
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full border border-lime-orbit/40 bg-lime-orbit/15">
+                          <svg className="h-3.5 w-3.5 text-lime-orbit" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900">
+                          <svg className="h-3.5 w-3.5 text-zinc-700" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Others check */}
+                    <div className="flex w-28 justify-center">
+                      {row.them ? (
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900">
+                          <svg className="h-3.5 w-3.5 text-zinc-500" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900">
+                          <svg className="h-3.5 w-3.5 text-zinc-700" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </Reveal>
         </div>
@@ -550,9 +552,9 @@ export default function About() {
       </section>
 
       {/* ── Team (3D flip cards) ──────────────────────────────────────────── */}
-      <section className="py-24 px-6 md:px-12 border-t border-zinc-900 bg-zinc-950/10">
+      <section className="border-t border-zinc-900 bg-zinc-950/10 px-4 py-20 sm:px-6 md:px-12 md:py-24">
         <div className="max-w-6xl mx-auto">
-          <Reveal className="text-center max-w-xl mx-auto mb-20">
+          <Reveal className="mx-auto mb-20 max-w-xl text-center">
             <div className="text-[10px] uppercase font-bold tracking-[0.3em] text-lime-orbit mb-4 font-mono">
               [ LEADERSHIP ]
             </div>
@@ -562,7 +564,7 @@ export default function About() {
             <p className="text-zinc-500 text-sm mt-4">Hover a card to flip it.</p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
             {team.map((member, i) => (
               <TeamCard key={i} member={member} delay={i * 120} />
             ))}
