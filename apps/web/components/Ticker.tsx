@@ -1,13 +1,13 @@
 import { motion } from "motion/react";
 
 const items = [
-  "Culture-first strategy",
-  "Gen Z Marketing",
-  "Campus Activation",
-  "500+ Touchpoints",
-  "Creator Campaigns",
+  "Content Strategy",
+  "Content Marketing",
+  "Digital Campaigns",
+  "500+ Campaign Touchpoints",
+  "Performance Marketing",
   "12 Cities Active",
-  "Meme Marketing",
+  "Brand Strategy",
 ];
 
 const fadeUp = {

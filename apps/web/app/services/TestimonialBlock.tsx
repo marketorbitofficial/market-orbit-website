@@ -6,19 +6,19 @@ const testimonials = [
   {
     badge: "Client",
     quote:
-      "Market Orbit helped us reach 40K students in 8 cities within 3 weeks. It didn't feel like marketing — it felt native.",
-    attribution: "— CMO, Campus Campaign",
+      "Market Orbit helped us reach 40K qualified customers in 8 cities within 3 weeks. It didn't feel like marketing — it felt relevant.",
+    attribution: "— CMO, Digital Campaign",
   },
   {
     badge: "Client",
     quote:
-      "The meme strategy alone drove 3× our usual engagement. These guys actually understand Gen Z — not just talk about it.",
-    attribution: "— Brand Lead, Youth Launch",
+      "The content strategy alone drove 3x our usual engagement. These guys actually understand customers — not just talk about funnels.",
+    attribution: "— Brand Lead, Product Launch",
   },
   {
     badge: "Client",
     quote:
-      "We briefed them on a Monday. By Friday we had a fully mapped campus activation plan and creator shortlist. Unreal speed.",
+      "We briefed them on a Monday. By Friday we had a fully mapped campaign plan and content rollout. Unreal speed.",
     attribution: "— Founder, D2C Brand",
   },
 ];

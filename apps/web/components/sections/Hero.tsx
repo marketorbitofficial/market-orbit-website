@@ -101,7 +101,7 @@ export default function Hero() {
           className="hero-animate text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-lime-orbit font-mono"
           style={{ animationDelay: "0.05s" }}
         >
-          [ INDIA&apos;S YOUTH-FIRST MARKETING AGENCY ]
+          [ INDIA&apos;S GROWTH-FOCUSED MARKETING AGENCY ]
         </div>
 
         {/* ── Main Headline ──────────────────────────────────────────────── */}
