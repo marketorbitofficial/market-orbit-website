@@ -1,17 +1,17 @@
 import { motion } from "motion/react";
 
 const typicalAgencyBullets = [
-  "Research-based insights / outsourced creators",
+  "Surface-level research / outsourced execution",
   "Standardized playbooks",
   "Quarterly wrap reports",
-  "Campus presence treated as add-on",
+  "Channel strategy treated as an add-on",
 ];
 
 const marketOrbitBullets = [
-  "Native fluency + on-campus presence",
-  "Culture-first strategy per city",
+  "Audience fluency + integrated execution",
+  "Market-aware strategy by region",
   "Live dashboard from day one",
-  "500+ touchpoints across 12 cities",
+  "500+ campaign touchpoints across 12 cities",
 ];
 
 const fadeUp = {
@@ -54,11 +54,11 @@ export default function Differentiator() {
             THE DIFFERENCE
           </p>
           <h2 className="font-serif text-4xl leading-tight text-white md:text-6xl">
-            Built from the street up, not the boardroom down.
+            Built from real market insight, not assumptions.
           </h2>
           <p className="mt-5 text-sm leading-relaxed text-neutral-500">
             The gap is not effort. It is proximity. Market Orbit sits closer to
-            the communities brands are trying to reach.
+            the audiences brands are trying to reach.
           </p>
         </motion.div>
       <motion.div

@@ -3,10 +3,10 @@
 import { useState } from "react";
 
 const SERVICE_OPTIONS = [
-  "Campus Activations",
-  "Gen Z Content Strategy",
-  "Creator Campaigns",
-  "Meme Marketing",
+  "Content Marketing",
+  "Brand Strategy",
+  "Digital Campaigns",
+  "Performance Marketing",
   "Social Media Management",
   "Brand Partnerships",
   "Other",

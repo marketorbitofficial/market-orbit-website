@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Market Orbit | Youth Marketing Agency",
-  description: "The leading youth marketing agency in Central India. We build brands, we drive growth, we connect with Gen Z.",
+  title: "Market Orbit | Marketing Agency",
+  description: "A growth-focused marketing agency in Central India. We build brands, drive measurable growth, and connect businesses with the right customers.",
 };
 
 export default function RootLayout({

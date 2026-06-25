@@ -69,17 +69,17 @@ const values = [
   {
     num: "03",
     title: "Radical Transparency",
-    desc: "No hidden clauses or vanity metrics. We share raw data, real student interactions, campaign wins, and operational learnings openly.",
+    desc: "No hidden clauses or vanity metrics. We share raw data, real customer interactions, campaign wins, and operational learnings openly.",
   },
   {
     num: "04",
     title: "Data Over Opinions",
-    desc: "We listen directly to campus leaders and Gen-Z trends, designing campaigns on validated student insights rather than boardroom assumptions.",
+    desc: "We listen directly to customer signals and market trends, designing campaigns on validated audience insights rather than boardroom assumptions.",
   },
   {
     num: "05",
     title: "Speed With Precision",
-    desc: "In the fast-paced youth market, speed is our competitive advantage, but design fidelity and execution precision remain our promise.",
+    desc: "In fast-moving markets, speed is our competitive advantage, but design fidelity and execution precision remain our promise.",
   },
   {
     num: "06",
@@ -92,22 +92,22 @@ const timelineSteps = [
   {
     year: "2021",
     title: "Founded in Bhopal",
-    desc: "Started by a team of college students to build authentic connections between local businesses and the campus community.",
+    desc: "Started by a small team to build stronger connections between local businesses and their customers.",
   },
   {
     year: "2022",
-    title: "Shift to Youth Marketing",
-    desc: "Recognized a massive gap in how national brands communicate with Gen Z, shifting full-time into youth-focused campaigns.",
+    title: "Shift to Growth Marketing",
+    desc: "Recognized a massive gap in how brands turn strategy into measurable demand, shifting full-time into growth-focused campaigns.",
   },
   {
     year: "2023",
     title: "Expanded to Central India",
-    desc: "Scaled our Campus Ambassador Network to cover 10+ major cities and established strategic ties with 50+ college societies.",
+    desc: "Scaled our partner network to cover 10+ major cities and established strategic ties with 50+ organizations.",
   },
   {
     year: "2024",
     title: "100+ Brands Served",
-    desc: "Solidified our presence as the go-to youth agency in the region, managing national student activations and digital strategies.",
+    desc: "Solidified our presence as a go-to marketing agency in the region, managing national digital campaigns and brand strategies.",
   },
 ];
 
@@ -117,20 +117,20 @@ const team = [
     role: "Co-Founder & CEO",
     initials: "AS",
     gradColor: "from-lime-950 via-zinc-900 to-black",
-    desc: "Leading the business direction and scaling our regional college networks.",
+    desc: "Leading the business direction and scaling our regional partner networks.",
     quote: "\"We don't chase trends — we engineer them.\"",
     linkedin: "#",
-    fun: "Pitched Market Orbit's first client in a college canteen.",
+    fun: "Pitched Market Orbit's first client from a small local workspace.",
   },
   {
     name: "Priya Rai",
     role: "Head of Growth",
     initials: "PR",
     gradColor: "from-emerald-950 via-zinc-900 to-black",
-    desc: "Strategizing influencer campaigns and managing client brand performance.",
+    desc: "Strategizing performance campaigns and managing client brand growth.",
     quote: "\"Data is the compass. Creativity is the engine.\"",
     linkedin: "#",
-    fun: "Built our first influencer network from a single Instagram DM.",
+    fun: "Built our first partner network from a single Instagram DM.",
   },
   {
     name: "Rohan Verma",
@@ -145,14 +145,14 @@ const team = [
 ];
 
 const whyUs = [
-  { feature: "Gen-Z insider knowledge", us: true, them: false },
-  { feature: "Campus ambassador network", us: true, them: false },
+  { feature: "Audience insight expertise", us: true, them: false },
+  { feature: "Regional partner network", us: true, them: false },
   { feature: "Real-time campaign data", us: true, them: true },
   { feature: "Central India expertise", us: true, them: false },
   { feature: "Flat-fee transparent pricing", us: true, them: false },
   { feature: "Dedicated WhatsApp support", us: true, them: false },
-  { feature: "Cultural trend research", us: true, them: true },
-  { feature: "Student-run creative team", us: true, them: false },
+  { feature: "Market trend research", us: true, them: true },
+  { feature: "In-house creative team", us: true, them: false },
 ];
 
 /* ─── Team Card (3D flip) ─────────────────────────────────────────────────── */
@@ -301,9 +301,9 @@ export default function About() {
             className="hero-animate max-w-2xl text-base font-medium leading-relaxed text-zinc-400 sm:text-lg"
             style={{ animationDelay: "0.4s" }}
           >
-            A Gen-Z first creative marketing agency. We bridge the gap between
-            forward-thinking brands and active student communities through design,
-            community engagement, and cultural trends.
+            A growth-first creative marketing agency. We bridge the gap between
+            forward-thinking brands and high-intent audiences through design,
+            customer engagement, and market insight.
           </p>
         </div>
       </section>
@@ -387,8 +387,8 @@ export default function About() {
                 [ OUR MISSION ]
               </div>
               <p className="text-2xl md:text-3xl font-bold text-white leading-snug">
-                &ldquo;A world where youth intelligence and professional drive
-                are no longer opposites.&rdquo;
+                &ldquo;A world where customer insight and professional drive
+                move in the same direction.&rdquo;
               </p>
             </div>
             <div className="mt-8 text-[10px] text-lime-orbit/50 tracking-widest font-mono">
@@ -409,7 +409,7 @@ export default function About() {
               Why Market Orbit?
             </h2>
             <p className="text-zinc-500 text-sm md:text-base mt-4 leading-relaxed">
-              Not every agency understands what it means to speak Gen-Z fluently.
+              Not every agency understands how to turn audience insight into measurable growth.
             </p>
           </Reveal>
 

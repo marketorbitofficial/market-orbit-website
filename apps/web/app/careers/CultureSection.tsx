@@ -39,7 +39,7 @@ export function CultureSection() {
             alt="Market Orbit team"
             style={{
               width: "100%",
-              height: "480px",
+              height: "clamp(240px, 40vw, 480px)",
               objectFit: "cover",
               objectPosition: "center 30%",
               filter: "brightness(0.4) saturate(0.5)",
@@ -56,14 +56,14 @@ export function CultureSection() {
           <div
             style={{
               position: "absolute",
-              bottom: "48px",
-              left: "48px",
-              right: "48px",
+              bottom: "clamp(16px,4vw,48px)",
+              left: "clamp(16px,4vw,48px)",
+              right: "clamp(16px,4vw,48px)",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "flex-end",
               flexWrap: "wrap",
-              gap: "24px",
+              gap: "16px",
             }}
           >
             <p
@@ -83,7 +83,7 @@ export function CultureSection() {
               <br />
               solving hard problems."
             </p>
-            <div style={{ display: "flex", gap: "40px", flexShrink: 0 }}>
+            <div style={{ display: "flex", gap: "clamp(16px,4vw,40px)", flexShrink: 0, flexWrap: "wrap" }}>
               {[
                 { value: "94%", label: "Would recommend" },
                 { value: "3+", label: "Avg years tenure" },

@@ -4,22 +4,22 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "Do you only work with youth brands?",
+    question: "Do you only work with certain industries?",
     answer:
-      "No. We help any brand that needs to speak to younger audiences with clarity, speed and cultural accuracy.",
+      "No. We help any brand that needs clearer positioning, stronger content, and measurable campaign execution.",
   },
   {
-    question: "Can you run campus activations?",
+    question: "Can you run digital campaigns?",
     answer:
-      "Yes. We run on-ground activations across 12+ Indian cities including Delhi, Mumbai, Bengaluru, Hyderabad, Chennai and more. From stalls and sampling to flash events and ambassador drops — we handle end to end execution.",
+      "Yes. We run integrated campaigns across 12+ Indian cities including Delhi, Mumbai, Bengaluru, Hyderabad, Chennai and more. From strategy and creative to launch and reporting, we handle end-to-end execution.",
   },
   {
     question: "Do you handle content production?",
     answer:
-      "Absolutely. We have an in-house content team that produces reels, memes, UGC-style videos, and static creatives tailored for Gen Z platforms like Instagram, YouTube Shorts, and Snapchat.",
+      "Absolutely. We have an in-house content team that produces reels, short-form videos, social posts, ad creatives, and static assets tailored for platforms like Instagram, YouTube Shorts, LinkedIn, and Meta.",
   },
   {
-    question: "Can we start with one city or campus?",
+    question: "Can we start with one city or channel?",
     answer:
       "Yes. Many clients start with a single city pilot to test performance before scaling. We recommend starting with Delhi or Mumbai for maximum reach, but we can activate any tier-1 or tier-2 city.",
   },

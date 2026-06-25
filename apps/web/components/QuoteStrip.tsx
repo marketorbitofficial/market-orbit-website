@@ -20,12 +20,12 @@ export default function QuoteStrip() {
           OUR PHILOSOPHY
         </p>
         <p className="mx-auto max-w-4xl font-serif text-4xl leading-[1.08] text-white md:text-6xl">
-          &ldquo;The brands that win with youth are not louder.
+          &ldquo;The brands that win in-market are not louder.
           <br />
-          They are more fluent.&rdquo;
+          They are more relevant.&rdquo;
         </p>
         <p className="mx-auto mt-8 max-w-xl text-sm leading-relaxed text-neutral-500">
-          Fluency means knowing the rhythm before the brief arrives.
+          Relevance means knowing the customer before the brief arrives.
         </p>
       </div>
     </motion.section>

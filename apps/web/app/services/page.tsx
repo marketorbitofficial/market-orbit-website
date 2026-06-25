@@ -8,26 +8,16 @@ import CityMap from "./CityMap";
 import FaqAccordion from "./FaqAccordion";
 import OffersAccordion from "./OffersAccordion";
 
-const navItems = [
-  "Home",
-  "About",
-  "Services",
-  "Case Studies",
-  "Insights",
-  "Marketplace",
-  "Contact",
-];
-
 const services = [
   {
-    title: "Youth Marketing",
+    title: "Content Marketing",
     status: "Featured",
     description:
-      "Navigating Gen Z and Alpha with authentic engagement, campus activations and culture-first content.",
+      "Building brand authority with strategic content, digital campaigns and audience-first messaging.",
     deliverables: [
-      "Campus Activations",
-      "Gen Z Content Strategy",
-      "Ambassador Programs",
+      "Content Strategy",
+      "Campaign Planning",
+      "Brand Messaging",
     ],
     process: ["01 Brief", "02 Strategy", "03 Execution"],
   },
@@ -73,8 +63,18 @@ const services = [
 const steps = [
   ["Brief", "Understand goals.", "30 min discovery call"],
   ["Strategy", "Map the plan.", "5-day turnaround"],
-  ["Execution", "Go live fast.", "Campus-ready assets"],
+  ["Execution", "Go live fast.", "Market-ready assets"],
   ["Results", "Measure impact.", "Live reporting dashboard"],
+];
+
+const tickerItems = [
+  "Content Marketing",
+  "Digital Campaigns",
+  "500+ Campaign Touchpoints",
+  "Performance Marketing",
+  "12 Cities Active",
+  "Brand Strategy",
+  "Market Research",
 ];
 
 const fadeUp = {
@@ -83,9 +83,6 @@ const fadeUp = {
 };
 
 const revealTransition = { duration: 0.7, ease: "easeOut" as const };
-
-const revealViewport = { once: true, amount: 0.2 };
-
 
 function Kicker({ children }: { children: ReactNode }) {
   return (
@@ -109,15 +106,9 @@ export default function ServicesPage() {
   const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(0);
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA]">
-
+    <main className="min-h-screen w-full overflow-x-hidden bg-[#0A0A0A] text-[#FAFAFA]">
       <motion.section
-        className="relative mx-auto flex min-h-[760px] w-full max-w-[1140px] items-center justify-center overflow-hidden bg-[#080808] px-8 py-24 text-center lg:min-h-[956px]"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={revealViewport}
-        transition={revealTransition}
+        className="relative mx-auto box-border flex min-h-[640px] w-full max-w-full items-center justify-center overflow-hidden bg-[#080808] px-4 py-20 text-center sm:px-8 lg:min-h-[956px] lg:max-w-[1140px] lg:py-24"
       >
         {/* User-uploaded background image */}
         <div
@@ -131,20 +122,19 @@ export default function ServicesPage() {
 
 
         <motion.div
-          className="relative z-10 flex max-w-[448px] flex-col items-center gap-3"
+          className="relative z-10 box-border flex w-full max-w-[448px] flex-col items-center gap-3"
           variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
+          initial="visible"
+          animate="visible"
           transition={{ ...revealTransition, delay: 0.08 }}
         >
-          <Kicker>Youth Marketing</Kicker>
+          <Kicker>Content Marketing</Kicker>
           <h1 className="font-serif text-[64px] leading-[0.92] tracking-[0.32px] text-[#FAFAFA] sm:text-[96px]">
-            Services that move culture
+            Services that move brands
           </h1>
           <p className="max-w-[408px] pb-7 pt-3 text-[15px] leading-6 text-[#999999]">
-            We design campaigns that meet young audiences where they already
-            are: campus, creators, communities and social feeds.
+            We design campaigns that meet customers where they already
+            are: search, social, content platforms and trusted communities.
           </p>
           <a
             href="#services"
@@ -165,60 +155,68 @@ export default function ServicesPage() {
         viewport={{ once: true, amount: 0.4 }}
         transition={revealTransition}
       >
-        <div className="marquee-track py-[10px]">
-          {[0, 1].map((dupe) => (
-            <span
-              key={dupe}
-              className="flex shrink-0 items-center"
-              aria-hidden={dupe === 1 ? "true" : undefined}
-            >
-              {[
-                "Gen Z Marketing",
-                "Campus Activation",
-                "500+ Touchpoints",
-                "Creator Campaigns",
-                "12 Cities Active",
-                "Meme Marketing",
-                "Culture-First Strategy",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="flex items-center whitespace-nowrap px-6"
-                  style={{
-                    color: "#C8F700",
-                    fontSize: "11px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.12em",
-                    fontWeight: 500,
-                  }}
-                >
-                  {item}
-                  <span className="mx-6 text-[#C8F700] opacity-60">◆</span>
-                </span>
-              ))}
-            </span>
-          ))}
+        <div className="flex h-12 w-full items-center overflow-hidden">
+          <div className="services-marquee-track flex w-max min-w-max flex-nowrap items-center whitespace-nowrap">
+            {[0, 1].map((dupe) => (
+              <span
+                key={dupe}
+                className="flex shrink-0 flex-nowrap items-center"
+                aria-hidden={dupe === 1 ? "true" : undefined}
+              >
+                {tickerItems.map((item) => (
+                  <span
+                    key={item}
+                    className="flex shrink-0 items-center whitespace-nowrap px-5"
+                    style={{
+                      color: "#C8F700",
+                      fontSize: "11px",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.12em",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {item}
+                    <span className="mx-5 shrink-0 text-[#C8F700] opacity-60">◆</span>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
         </div>
+        <style>{`
+          .services-marquee-track {
+            animation: services-marquee-scroll 28s linear infinite;
+          }
+
+          .services-marquee-track:hover {
+            animation-play-state: paused;
+          }
+
+          @keyframes services-marquee-scroll {
+            from {
+              transform: translateX(0);
+            }
+
+            to {
+              transform: translateX(-50%);
+            }
+          }
+        `}</style>
       </motion.div>
 
-      <motion.div
-        className="mx-auto grid w-full max-w-[1140px] border-t border-[#222222] lg:grid-cols-2"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={revealViewport}
-        transition={revealTransition}
+      <div
+        className="mx-auto grid w-full max-w-full border-t border-[#222222] lg:max-w-[1140px] lg:grid-cols-2"
       >
-        <aside className="border-[#222222] lg:border-r">
-          <section className="bg-[#080808] px-8 py-24 text-center">
-            <div className="mx-auto flex max-w-[505px] flex-col items-center gap-3">
+        <aside className="box-border w-full max-w-full border-[#222222] lg:border-r">
+          <section className="box-border w-full max-w-full bg-[#080808] px-4 py-20 text-center sm:px-8 lg:py-24">
+            <div className="mx-auto box-border flex w-full max-w-[505px] flex-col items-center gap-3">
               <Kicker>Services</Kicker>
-              <h2 className="font-serif text-[44px] leading-[0.95] tracking-[0.32px] text-[#FAFAFA] sm:text-[60px]">
-                Built for youth-first growth.
+              <h2 className="max-w-full break-words font-serif text-[38px] leading-[1] tracking-[0.32px] text-[#FAFAFA] sm:text-[60px] sm:leading-[0.95]">
+                Built for brand-first growth.
               </h2>
               <p className="max-w-[448px] pt-3 text-[15px] leading-6 text-[#999999]">
                 Strategy, activation, content and reporting for brands that
-                need to be understood by the next generation.
+                need to be discovered, understood and chosen by the right customers.
               </p>
 
               {/* ── Brand keyword cloud ── */}
@@ -272,8 +270,8 @@ export default function ServicesPage() {
           </section>
 
           {/* ── City presence map ── */}
-          <section className="bg-[#050505] px-8 py-14">
-            <div className="mx-auto max-w-[505px]">
+          <section className="box-border w-full max-w-full bg-[#050505] px-4 py-14 sm:px-8">
+            <div className="mx-auto box-border w-full max-w-[505px]">
               <p
                 style={{
                   fontSize: "9px",
@@ -283,14 +281,14 @@ export default function ServicesPage() {
                   marginBottom: "20px",
                 }}
               >
-                Campus presence across India
+                Market presence across India
               </p>
               <CityMap />
             </div>
           </section>
 
-          <section id="services" className="bg-[#0F0F0F] px-8 py-24">
-            <div className="mx-auto max-w-[505px]">
+          <section id="services" className="box-border w-full max-w-full bg-[#0F0F0F] px-4 py-20 sm:px-8 lg:py-24">
+            <div className="mx-auto box-border w-full max-w-[505px]">
               <Kicker>All Services</Kicker>
               <div className="mt-6 border-t border-[#222222]">
                 {services.map((service, index) => {
@@ -317,15 +315,17 @@ export default function ServicesPage() {
                             current === index ? null : index
                           )
                         }
-                        className={`flex w-full items-center justify-between text-left ${isOpen ? "px-8 pb-0 pt-8" : "min-h-[72px] py-[21.5px]"
-                          }`}
+                        className={`box-border flex w-full items-center justify-between text-left ${
+                          isOpen ? "px-4 pb-0 pt-8 sm:px-8" : "min-h-[72px] py-[21.5px]"
+                        }`}
                         aria-expanded={isOpen}
                       >
-                        <div className="flex items-center gap-6">
+                        <div className="flex min-w-0 items-center gap-4 sm:gap-6">
                           <ArrowMark active={isOpen} />
                           <h3
-                            className={`font-serif text-xl font-bold leading-7 transition-colors duration-300 ${isOpen ? "text-[#C8FF00]" : "text-[#FAFAFA]"
-                              }`}
+                            className={`font-serif text-lg font-bold leading-7 transition-colors duration-300 sm:text-xl ${
+                              isOpen ? "text-[#C8FF00]" : "text-[#FAFAFA]"
+                            }`}
                           >
                             {service.title}
                           </h3>
@@ -352,7 +352,7 @@ export default function ServicesPage() {
                             transition={{ duration: 0.36, ease: "easeOut" }}
                             className="overflow-hidden"
                           >
-                            <div className="px-8 pb-8 pt-6">
+                            <div className="box-border w-full max-w-full px-4 pb-8 pt-6 sm:px-8">
                               <p className="text-sm leading-5 text-[#999999]">
                                 {service.description}
                               </p>
@@ -392,19 +392,19 @@ export default function ServicesPage() {
           </section>
         </aside>
 
-        <div>
-          <section id="overview" className="bg-[#080808] px-8 py-24">
-            <div className="mx-auto max-w-[506px]">
+        <div className="box-border w-full max-w-full">
+          <section id="overview" className="box-border w-full max-w-full bg-[#080808] px-4 py-20 sm:px-8 lg:py-24">
+            <div className="mx-auto box-border w-full max-w-[506px]">
               <Kicker>Overview</Kicker>
               <div className="mt-3 grid gap-8 sm:grid-cols-2">
                 <div className="space-y-6">
                   <h2 className="font-serif text-2xl font-bold leading-8 text-[#FAFAFA]">
-                    We speak the culture, we do not translate it.
+                    We understand the market, then build for it.
                   </h2>
                   <p className="text-sm leading-[23px] text-[#999999]">
-                    From campus activations to meme marketing, we build
-                    authentic connections between brands and the most
-                    influential generation of consumers.
+                    From content systems to performance campaigns, we build
+                    authentic connections between brands and the customers
+                    most likely to act.
                   </p>
                 </div>
                 <StatsBlock />
@@ -412,15 +412,15 @@ export default function ServicesPage() {
             </div>
           </section>
 
-          <section className="bg-[#0F0F0F] px-8 py-24">
-            <div className="mx-auto max-w-[506px]">
+          <section className="box-border w-full max-w-full bg-[#0F0F0F] px-4 py-20 sm:px-8 lg:py-24">
+            <div className="mx-auto box-border w-full max-w-[506px]">
               <Kicker>What We Offer</Kicker>
               <OffersAccordion />
             </div>
           </section>
 
-          <section className="bg-[#080808] px-8 py-24">
-            <div className="mx-auto max-w-[506px]">
+          <section className="box-border w-full max-w-full bg-[#080808] px-4 py-20 sm:px-8 lg:py-24">
+            <div className="mx-auto box-border w-full max-w-[506px]">
               <Kicker>How We Work</Kicker>
               <div className="step-grid mt-6 grid gap-6 sm:grid-cols-4">
                 {steps.map(([title, description, subtitle]) => (
@@ -453,37 +453,25 @@ export default function ServicesPage() {
           </section>
 
           {/* ── Testimonial quote block ── */}
-          <section className="bg-[#080808] px-8 py-16">
-            <div className="mx-auto max-w-[506px]">
+          <section className="box-border w-full max-w-full bg-[#080808] px-4 py-16 sm:px-8">
+            <div className="mx-auto box-border w-full max-w-[506px]">
               <TestimonialBlock />
             </div>
           </section>
         </div>
-      </motion.div>
+      </div>
       {/* ── END outer 2-col grid ── */}
 
       {/* ── FAQ section: full-width 3-col grid ── */}
-      <motion.section
-        className="bg-[#0F0F0F] px-8 py-24"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={revealViewport}
-        transition={revealTransition}
+      <section
+        className="box-border w-full max-w-full bg-[#0F0F0F] px-4 py-20 sm:px-8 lg:py-24"
       >
         <div
-          style={{
-            margin: "0 auto",
-            maxWidth: "1140px",
-            display: "grid",
-            gridTemplateColumns: "300px 1px 1fr",
-            gap: "0 48px",
-            alignItems: "start",
-          }}
+          className="mx-auto grid w-full max-w-[1140px] grid-cols-1 items-start gap-y-10 lg:grid-cols-[300px_1px_1fr] lg:gap-x-12 lg:gap-y-0"
         >
 
           {/* ── Col 1: Sticky editorial ── */}
-          <div style={{ position: "sticky", top: "100px", alignSelf: "start" }}>
+          <div className="box-border w-full max-w-full lg:sticky lg:top-[100px] lg:self-start">
             {/* Label */}
             <p
               style={{
@@ -507,9 +495,9 @@ export default function ServicesPage() {
                 margin: 0,
               }}
             >
-              Gen Z has{" "}
-              <span style={{ color: "#C8F700" }}>$360B</span>
-              {" "}in spending power.
+              Customers reward{" "}
+              <span style={{ color: "#C8F700" }}>relevance</span>
+              {" "}over noise.
             </p>
 
             {/* Supporting line — unchanged */}
@@ -521,16 +509,16 @@ export default function ServicesPage() {
                 marginTop: "12px",
               }}
             >
-              They don&rsquo;t respond to ads. They respond to culture.
-              That&rsquo;s what we build.
+              They don&rsquo;t respond to generic ads. They respond to useful,
+              timely messages. That&rsquo;s what we build.
             </p>
 
             {/* ── Vertical stat stack ── */}
             <div style={{ marginTop: "2rem" }}>
               {[
-                { value: "72%", label: "of Gen Z discover brands on social first" },
-                { value: "8 sec", label: "average Gen Z attention window" },
-                { value: "#1", label: "most influential consumer generation" },
+                { value: "72%", label: "of buyers research brands before reaching out" },
+                { value: "8 sec", label: "average time to earn attention" },
+                { value: "#1", label: "reason customers choose a brand is relevance" },
               ].map(({ value, label }, i) => (
                 <div
                   key={value}
@@ -584,8 +572,8 @@ export default function ServicesPage() {
                   margin: 0,
                 }}
               >
-                &ldquo;The brands that win with youth aren&rsquo;t louder
-                &mdash; they&rsquo;re more fluent.&rdquo;
+                &ldquo;The brands that win in-market aren&rsquo;t louder
+                &mdash; they&rsquo;re more relevant.&rdquo;
               </p>
               <p
                 style={{
@@ -602,28 +590,23 @@ export default function ServicesPage() {
           </div>
 
           {/* ── Col 2: Vertical divider ── */}
-          <div style={{ background: "#1e1e1e", width: "1px", alignSelf: "stretch" }} />
+          <div className="hidden w-px self-stretch bg-[#1e1e1e] lg:block" />
 
           {/* ── Col 3: FAQ accordion ── */}
-          <div>
+          <div className="box-border w-full max-w-full">
             <FaqAccordion />
           </div>
 
         </div>
-      </motion.section>
+      </section>
 
-      <motion.section
+      <section
         id="contact"
-        className="bg-[#C8FF00] px-8 py-24 text-center text-[#080808]"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={revealViewport}
-        transition={revealTransition}
+        className="box-border w-full max-w-full bg-[#C8FF00] px-4 py-20 text-center text-[#080808] sm:px-8 lg:py-24"
       >
-        <div className="mx-auto flex max-w-[506px] flex-col items-center">
+        <div className="mx-auto box-border flex w-full max-w-[506px] flex-col items-center">
           <h2 className="max-w-[427px] font-serif text-[56px] leading-[0.88] tracking-[0.32px] sm:text-[96px]">
-            Ready to orbit culture?
+            Ready to orbit growth?
           </h2>
           <p className="pt-6 text-base leading-6 text-[#333333]">
             Bring us the brief. We will bring the audience, plan and proof.
@@ -643,7 +626,7 @@ export default function ServicesPage() {
             </a>
           </div>
         </div>
-      </motion.section>
+      </section>
     </main>
   );
 }

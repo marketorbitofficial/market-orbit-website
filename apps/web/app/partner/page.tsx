@@ -74,7 +74,7 @@ export default function PartnerPage() {
     {
       name: "Educational Institution",
       industry: "Education",
-      description: "Campus activation and talent development programs"
+      description: "Brand education and talent development programs"
     }
   ];
 
