@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-zinc-900 text-zinc-400 py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
-        
+
         {/* Brand Column */}
         <div className="flex flex-col gap-6">
           <Link href="/" className="inline-block">
@@ -102,7 +102,9 @@ export default function Footer() {
                 Office
               </p>
               <p className="text-zinc-300 leading-relaxed">
-                Bhopal, Madhya Pradesh,<br />India
+                KH. NO.276, Ground Floor,<br />
+                Prahalad Vihar,<br />
+                Delhi - 110042,<br />India
               </p>
             </div>
             <div>
@@ -113,7 +115,7 @@ export default function Footer() {
                 href="mailto:hello@marketorbit.agency"
                 className="text-zinc-300 hover:text-lime-orbit hover:text-glow transition-colors duration-300"
               >
-                hello@marketorbit.agency
+                corporate@marketorbit.in
               </a>
             </div>
             <div>
