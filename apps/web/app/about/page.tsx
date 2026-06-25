@@ -91,7 +91,7 @@ const values = [
 const timelineSteps = [
   {
     year: "2021",
-    title: "Founded in Bhopal",
+    title: "Founded in Delhi",
     desc: "Started by a small team to build stronger connections between local businesses and their customers.",
   },
   {
@@ -436,9 +436,8 @@ export default function About() {
                 {whyUs.map((row, i) => (
                   <div
                     key={i}
-                    className={`grid grid-cols-[1fr_auto_auto] items-center gap-4 px-4 py-4 transition-colors duration-200 hover:bg-zinc-950/60 ${
-                      i !== whyUs.length - 1 ? "border-b border-zinc-900" : ""
-                    }`}
+                    className={`grid grid-cols-[1fr_auto_auto] items-center gap-4 px-4 py-4 transition-colors duration-200 hover:bg-zinc-950/60 ${i !== whyUs.length - 1 ? "border-b border-zinc-900" : ""
+                      }`}
                   >
                     <span className="text-sm font-medium text-zinc-300">{row.feature}</span>
 
@@ -510,21 +509,19 @@ export default function About() {
                           {value.num}
                         </span>
                         <h3
-                          className={`text-xl md:text-2xl font-bold transition-colors duration-300 ${
-                            isOpen
+                          className={`text-xl md:text-2xl font-bold transition-colors duration-300 ${isOpen
                               ? "text-lime-orbit text-glow"
                               : "text-white group-hover:text-lime-orbit"
-                          }`}
+                            }`}
                         >
                           {value.title}
                         </h3>
                       </div>
                       <div
-                        className={`w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full border transition-all duration-300 ${
-                          isOpen
+                        className={`w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full border transition-all duration-300 ${isOpen
                             ? "rotate-45 border-lime-orbit text-lime-orbit shadow-[0_0_10px_rgba(191,255,0,0.3)]"
                             : "border-zinc-800 text-zinc-500"
-                        }`}
+                          }`}
                       >
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -533,9 +530,8 @@ export default function About() {
                     </div>
 
                     <div
-                      className={`grid transition-all duration-300 ease-in-out ${
-                        isOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"
-                      }`}
+                      className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"
+                        }`}
                     >
                       <div className="overflow-hidden">
                         <p className="pl-12 text-sm md:text-base text-zinc-400 leading-relaxed max-w-2xl">
