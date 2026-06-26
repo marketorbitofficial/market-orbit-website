@@ -9,7 +9,7 @@ const brandLogos = [
   {
     name: "NEXUS",
     svg: (
-      <svg className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg aria-hidden="true" focusable="false" className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
       </svg>
     ),
@@ -17,7 +17,7 @@ const brandLogos = [
   {
     name: "APEX",
     svg: (
-      <svg className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg aria-hidden="true" focusable="false" className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M12 2L2 22h20L12 2z" />
       </svg>
     ),
@@ -25,7 +25,7 @@ const brandLogos = [
   {
     name: "VORTEX",
     svg: (
-      <svg className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg aria-hidden="true" focusable="false" className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <circle cx="12" cy="12" r="10" />
         <path d="M12 6a6 6 0 0 1 6 6" />
       </svg>
@@ -34,7 +34,7 @@ const brandLogos = [
   {
     name: "KINETIC",
     svg: (
-      <svg className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg aria-hidden="true" focusable="false" className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M13 2L3 14h9l-1 8 10-10h-9l1-8z" />
       </svg>
     ),
@@ -42,7 +42,7 @@ const brandLogos = [
   {
     name: "ECLIPSE",
     svg: (
-      <svg className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg aria-hidden="true" focusable="false" className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M12 3a9 9 0 1 0 9 9 9.75 9.75 0 0 0-.67-3.4" />
       </svg>
     ),
@@ -50,7 +50,7 @@ const brandLogos = [
   {
     name: "ZENITH",
     svg: (
-      <svg className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg aria-hidden="true" focusable="false" className="w-5 h-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" />
       </svg>
     ),
