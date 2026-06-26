@@ -12,8 +12,8 @@ const INFO_ITEMS = [
   },
   {
     label: "Phone",
-    lines: ["+91 98765 43210"],
-    href: "tel:+919876543210",
+    lines: ["+91 85443 20267"],
+    href: "tel:+91 85443 20267",
   },
   {
     label: "Business Hours",

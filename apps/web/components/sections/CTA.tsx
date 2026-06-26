@@ -16,7 +16,7 @@ export default function CTA({
   primaryBtnText = "Join the team",
   primaryBtnHref = "/careers",
   secondaryBtnText = "Talk directly",
-  secondaryBtnHref = "tel:+919876543210",
+  secondaryBtnHref = "tel:+9185443 20267",
 }: CTAProps) {
   return (
     <section className="py-24 px-6 md:px-12 border-t border-zinc-900 bg-zinc-950/10 relative overflow-hidden">

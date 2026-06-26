@@ -123,10 +123,10 @@ export default function Footer() {
                 Call/WhatsApp
               </p>
               <a
-                href="tel:+919876543210"
+                href="tel:+918544320267"
                 className="text-zinc-300 hover:text-lime-orbit hover:text-glow transition-colors duration-300"
               >
-                +91 98765 43210
+                +91 85443 20267
               </a>
             </div>
           </div>
