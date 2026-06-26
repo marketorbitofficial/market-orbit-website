@@ -18,6 +18,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Market Orbit | Marketing Agency",
   description: "A growth-focused marketing agency in Central India. We build brands, drive measurable growth, and connect businesses with the right customers.",
+  openGraph: {
+    title: "Market Orbit | Marketing Agency",
+    description: "A growth-focused marketing agency in Central India. We build brands, drive measurable growth, and connect businesses with the right customers.",
+    url: "https://marketorbit.in",
+    siteName: "Market Orbit",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Market Orbit | Marketing Agency",
+    description: "A growth-focused marketing agency in Central India. We build brands, drive measurable growth, and connect businesses with the right customers.",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +42,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-black text-white font-sans selection:bg-lime-orbit selection:text-black">
+      <body className="min-h-full flex flex-col bg-black text-white font-sans selection:bg-lime-orbit selection:text-black overflow-x-hidden">
         <CursorGlow />
         <Navbar />
         <main className="flex-grow pt-[76px] flex flex-col">

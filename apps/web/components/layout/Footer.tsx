@@ -19,10 +19,10 @@ export default function Footer() {
           {/* Social Links */}
           <div className="grid grid-cols-2 gap-y-3 gap-x-6 mt-4 w-fit">
             {[
-              { name: "Instagram", href: "#instagram" },
+              { name: "Instagram", href: "https://www.instagram.com/market.orbit.agency?igsh=M2ZyY25zY3hpamdo&utm_source=qr" },
               { name: "LinkedIn", href: "https://www.linkedin.com/company/cdfindia/" },
-              { name: "Twitter", href: "#twitter" },
-              { name: "Behance", href: "#behance" }
+              // { name: "Twitter", href: "#twitter" },
+              // { name: "Behance", href: "#behance" }
             ].map((social) => (
               <a
                 key={social.name}

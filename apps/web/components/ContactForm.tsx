@@ -40,8 +40,7 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Backend logic not implemented
-    console.log(formData);
+    // Replace with real API call in production
   };
 
   return (

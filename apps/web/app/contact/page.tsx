@@ -1,4 +1,15 @@
+import { Metadata } from "next";
 import ContactHero from "@/components/ContactHero";
+
+export const metadata: Metadata = {
+  title: "Contact Us | Market Orbit",
+  description: "Get in touch with Market Orbit to discuss your brand's growth and marketing needs.",
+  openGraph: {
+    title: "Contact Us | Market Orbit",
+    description: "Get in touch with Market Orbit to discuss your brand's growth and marketing needs.",
+    url: "https://marketorbit.in/contact",
+  }
+};
 import ContactForm from "@/components/ContactForm";
 import ContactInfo from "@/components/ContactInfo";
 import PreferToTalkDirectly from "@/components/PreferToTalkDirectly";
