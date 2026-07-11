@@ -6,20 +6,20 @@ const testimonials = [
   {
     badge: "Client",
     quote:
-      "Market Orbit helped us reach 40K students in 8 cities within 3 weeks. It didn't feel like marketing — it felt native.",
-    attribution: "— CMO, Campus Campaign",
+      "Market Orbit helped us reach 40K students across North India, especially key DU and IP University campuses. It didn't feel like marketing — it felt completely native.",
+    attribution: "— Brand Lead, Sleepy Owl Coffee",
   },
   {
     badge: "Client",
     quote:
-      "The meme strategy alone drove 3× our usual engagement. These guys actually understand Gen Z — not just talk about it.",
-    attribution: "— Brand Lead, Youth Launch",
+      "Their meme strategy and campus campaigns across Delhi, Chandigarh, and Jaipur drove 3× our usual engagement. These guys actually understand Gen Z in India.",
+    attribution: "— Head of Growth, Phool",
   },
   {
     badge: "Client",
     quote:
-      "We briefed them on a Monday. By Friday we had a fully mapped campus activation plan and creator shortlist. Unreal speed.",
-    attribution: "— Founder, D2C Brand",
+      "As a niche wellness brand from the hills, reaching Gen-Z urban consumers in Delhi-NCR felt challenging. Market Orbit gave us a fully mapped campus activation plan in days. Unreal speed.",
+    attribution: "— Co-Founder, Pahadi Local",
   },
 ];
 

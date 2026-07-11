@@ -238,16 +238,16 @@ export default function ServicesPage() {
                   className="brand-cloud flex flex-wrap justify-center gap-2"
                 >
                   {[
-                    "Nike",
-                    "Spotify",
-                    "Red Bull",
-                    "Samsung",
-                    "Fenty",
-                    "Duolingo",
-                    "HBO",
-                    "Bumble",
-                    "Puma",
-                    "Snapchat",
+                    "Blue Tokai",
+                    "Pahadi Local",
+                    "Phool",
+                    "Sleepy Owl",
+                    "Bhaane",
+                    "Dharmsala Tea Co.",
+                    "Perfora",
+                    "Namhya Foods",
+                    "Jimmy's Cocktails",
+                    "Heads Up For Tails",
                   ].map((brand) => (
                     <span
                       key={brand}
