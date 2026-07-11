@@ -64,7 +64,7 @@ export function WhyJoinUs() {
         >
           {/* LEFT: list */}
           <div style={{ background: "#0f0f0f", borderRight: "1px solid #1a1a1a", display: "flex", flexDirection: "column" }}>
-            <div style={{ padding: "40px 40px 32px", borderBottom: "1px solid #1a1a1a" }}>
+            <div style={{ padding: "clamp(20px,5vw,40px) clamp(16px,5vw,40px) 32px", borderBottom: "1px solid #1a1a1a" }}>
               <h2
                 style={{
                   fontFamily: "'Playfair Display', serif",
@@ -94,7 +94,7 @@ export function WhyJoinUs() {
                       display: "grid",
                       gridTemplateColumns: "44px 1fr",
                       gap: "16px",
-                      padding: "20px 40px",
+                      padding: "20px clamp(16px,5vw,40px)",
                       background: isActive ? "#141414" : "#00000000",
                       borderBottom: i < reasons.length - 1 ? "1px solid #222" : "none",
                       borderTop: "none",

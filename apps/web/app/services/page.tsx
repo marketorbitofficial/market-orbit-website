@@ -1,109 +1,15 @@
-"use client";
+import { Metadata } from "next";
+import ServicesClient from "./ServicesClient";
 
-import { useState, type ReactNode } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import StatsBlock from "./StatsBlock";
-import TestimonialBlock from "./TestimonialBlock";
-import CityMap from "./CityMap";
-import FaqAccordion from "./FaqAccordion";
-import OffersAccordion from "./OffersAccordion";
-
-const navItems = [
-  "Home",
-  "About",
-  "Services",
-  "Case Studies",
-  "Insights",
-  "Marketplace",
-  "Contact",
-];
-
-const services = [
-  {
-    title: "Youth Marketing",
-    status: "Featured",
-    description:
-      "Navigating Gen Z and Alpha with authentic engagement, campus activations and culture-first content.",
-    deliverables: [
-      "Campus Activations",
-      "Gen Z Content Strategy",
-      "Ambassador Programs",
-    ],
-    process: ["01 Brief", "02 Strategy", "03 Execution"],
-  },
-  {
-    title: "PR & Personal Branding",
-    status: "Explore",
-    description:
-      "We shape founder voices, executive visibility and brand reputation with sharp positioning, media strategy and narrative consistency.",
-    deliverables: [
-      "Media Relations",
-      "Founder Branding",
-      "Thought Leadership",
-    ],
-    process: ["01 Discovery", "02 Positioning", "03 Amplification"],
-  },
-  {
-    title: "Government Marketing",
-    status: "Explore",
-    description:
-      "Public-facing campaigns built for clarity, trust and participation across communities, institutions and civic audiences.",
-    deliverables: [
-      "Public Campaigns",
-      "Awareness Programs",
-      "Community Outreach",
-    ],
-    process: ["01 Research", "02 Planning", "03 Execution"],
-  },
-  {
-    title: "Social Media Marketing",
-    status: "Explore",
-    description:
-      "Always-on social systems that turn strategy into reels, short-form content, community energy and measurable engagement.",
-    deliverables: [
-      "Content Strategy",
-      "Reels & Short Form",
-      "Community Management",
-    ],
-    process: ["01 Strategy", "02 Creation", "03 Optimization"],
-  },
-];
-
-
-const steps = [
-  ["Brief", "Understand goals.", "30 min discovery call"],
-  ["Strategy", "Map the plan.", "5-day turnaround"],
-  ["Execution", "Go live fast.", "Campus-ready assets"],
-  ["Results", "Measure impact.", "Live reporting dashboard"],
-];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
+export const metadata: Metadata = {
+  title: "Our Services | Market Orbit",
+  description: "Explore Market Orbit's services including Content Marketing, PR & Personal Branding, Government Marketing, and Social Media Marketing.",
+  openGraph: {
+    title: "Our Services | Market Orbit",
+    description: "Explore Market Orbit's services including Content Marketing, PR & Personal Branding, Government Marketing, and Social Media Marketing.",
+    url: "https://marketorbit.in/services",
+  }
 };
-
-const revealTransition = { duration: 0.7, ease: "easeOut" as const };
-
-const revealViewport = { once: true, amount: 0.2 };
-
-
-function Kicker({ children }: { children: ReactNode }) {
-  return (
-    <p className="font-serif text-[11px] uppercase leading-6 tracking-[3.2px] text-[#C8FF00]">
-      {children}
-    </p>
-  );
-}
-
-function ArrowMark({ active = false }: { active?: boolean }) {
-  return (
-    <span
-      className={`block h-[9px] w-3 skew-x-[-24deg] ${active ? "bg-[#C8FF00]" : "bg-[#3A3A3A]"
-        }`}
-      aria-hidden="true"
-    />
-  );
-}
 
 export default function ServicesPage() {
   const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(0);

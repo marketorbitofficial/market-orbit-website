@@ -6,8 +6,8 @@ const testimonials = [
   {
     badge: "Client",
     quote:
-      "Market Orbit helped us reach 40K students across North India, especially key DU and IP University campuses. It didn't feel like marketing — it felt completely native.",
-    attribution: "— Brand Lead, Sleepy Owl Coffee",
+      "Market Orbit helped us reach 40K qualified customers in 8 cities within 3 weeks. It didn't feel like marketing — it felt relevant.",
+    attribution: "— CMO, Digital Campaign",
   },
   {
     badge: "Client",

@@ -176,7 +176,7 @@ export function BenefitsBento() {
             className="hidden lg:flex flex-col justify-between"
             style={{
               borderLeft: "1px solid #1a1a1a",
-              padding: "48px 44px",
+              padding: "clamp(28px, 4vw, 48px) clamp(24px, 4vw, 44px)",
               background: "#141414",
               minHeight: "380px",
             }}

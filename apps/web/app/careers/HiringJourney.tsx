@@ -128,6 +128,7 @@ export function HiringJourney() {
             style={{
               background: "#0f0f0f",
               borderRight: "1px solid #1a1a1a",
+              borderBottom: "1px solid #1a1a1a",
               position: "relative",
               padding: `${PT}px 28px`,
             }}
@@ -256,10 +257,10 @@ export function HiringJourney() {
           <div
             style={{
               background: "#080808",
-              padding: "48px 44px",
+              padding: "clamp(24px,5vw,48px) clamp(20px,5vw,44px)",
               display: "flex",
               flexDirection: "column",
-              minHeight: "480px",
+              minHeight: "320px",
             }}
           >
             

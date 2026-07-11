@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-zinc-900 text-zinc-400 py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
-        
+
         {/* Brand Column */}
         <div className="flex flex-col gap-6">
           <Link href="/" className="inline-block">
@@ -14,15 +14,15 @@ export default function Footer() {
             </span>
           </Link>
           <p className="text-sm text-zinc-500 leading-relaxed max-w-xs">
-            The leading youth marketing agency in Central India. Bridging the gap between ambitious brands and the Gen-Z ecosystem.
+            A full-service marketing agency in Central India. Bridging the gap between ambitious brands and measurable market growth.
           </p>
           {/* Social Links */}
           <div className="grid grid-cols-2 gap-y-3 gap-x-6 mt-4 w-fit">
             {[
-              { name: "Instagram", href: "#instagram" },
+              { name: "Instagram", href: "https://www.instagram.com/market.orbit.agency?igsh=M2ZyY25zY3hpamdo&utm_source=qr" },
               { name: "LinkedIn", href: "https://www.linkedin.com/company/cdfindia/" },
-              { name: "Twitter", href: "#twitter" },
-              { name: "Behance", href: "#behance" }
+              // { name: "Twitter", href: "#twitter" },
+              // { name: "Behance", href: "#behance" }
             ].map((social) => (
               <a
                 key={social.name}
@@ -44,9 +44,9 @@ export default function Footer() {
           </h4>
           <ul className="flex flex-col gap-3 text-sm">
             {[
-              "Youth Marketing",
-              "Influencer Marketing",
-              "Campus Activations",
+              "Content Marketing",
+              "Performance Marketing",
+              "Digital Campaigns",
               "Social Media Management",
               "Brand Strategy & Design",
             ].map((service) => (
@@ -102,7 +102,9 @@ export default function Footer() {
                 Office
               </p>
               <p className="text-zinc-300 leading-relaxed">
-                Bhopal, Madhya Pradesh,<br />India
+                KH. NO.276, Ground Floor,<br />
+                Prahalad Vihar,<br />
+                Delhi - 110042,<br />India
               </p>
             </div>
             <div>
@@ -113,7 +115,7 @@ export default function Footer() {
                 href="mailto:hello@marketorbit.agency"
                 className="text-zinc-300 hover:text-lime-orbit hover:text-glow transition-colors duration-300"
               >
-                hello@marketorbit.agency
+                corporate@marketorbit.in
               </a>
             </div>
             <div>
@@ -121,10 +123,10 @@ export default function Footer() {
                 Call/WhatsApp
               </p>
               <a
-                href="tel:+919876543210"
+                href="tel:+918544320267"
                 className="text-zinc-300 hover:text-lime-orbit hover:text-glow transition-colors duration-300"
               >
-                +91 98765 43210
+                +91 85443 20267
               </a>
             </div>
           </div>

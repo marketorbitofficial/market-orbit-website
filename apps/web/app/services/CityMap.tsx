@@ -79,7 +79,7 @@ export default function CityMap() {
   return (
     <div
       ref={mapRef}
-      className="relative mx-auto aspect-square w-full max-w-[400px] select-none [&_.map]:h-full [&_.map]:w-full [&_svg]:h-full [&_svg]:w-full"
+      className="relative mx-auto aspect-square w-full max-w-[400px] select-none [&_.map]:!h-full [&_.map]:!w-full [&_svg]:!h-auto [&_svg]:!w-full [&_svg]:!max-w-full"
       aria-hidden="true"
     >
       {/* 

@@ -3,10 +3,10 @@
 import { useState } from "react";
 
 const SERVICE_OPTIONS = [
-  "Campus Activations",
-  "Gen Z Content Strategy",
-  "Creator Campaigns",
-  "Meme Marketing",
+  "Content Marketing",
+  "Brand Strategy",
+  "Digital Campaigns",
+  "Performance Marketing",
   "Social Media Management",
   "Brand Partnerships",
   "Other",
@@ -40,8 +40,7 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Backend logic not implemented
-    console.log(formData);
+    // Replace with real API call in production
   };
 
   return (
@@ -66,7 +65,7 @@ export default function ContactForm() {
         {/* Overlay & Google Forms Button */}
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <a
-            href="https://forms.google.com/"
+            href="https://forms.gle/xBz18aXZnEYxGR6R6"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#C6FF00] text-black px-8 py-4 text-xs tracking-[0.25em] uppercase font-bold hover:bg-white transition-colors duration-200 shadow-[0_0_40px_rgba(198,255,0,0.3)]"
@@ -217,4 +216,4 @@ export default function ContactForm() {
   );
 }
 
-{/* improved UI */}
+{/* improved UI */ }

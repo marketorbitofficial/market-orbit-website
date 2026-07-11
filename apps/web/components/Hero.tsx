@@ -3,13 +3,13 @@ import { motion } from "motion/react";
 const stats = [
   {
     value: "500+",
-    label: "Campus touchpoints",
+    label: "Campaign touchpoints",
     subLabel: "vs 310 last year",
   },
   {
     value: "3x",
     label: "Avg engagement lift",
-    subLabel: "across youth campaigns",
+    subLabel: "across brand campaigns",
   },
   {
     value: "12+",
@@ -56,13 +56,13 @@ export default function Hero() {
               WHY MARKET ORBIT
             </p>
             <h1 className="max-w-5xl font-serif text-5xl leading-[1.02] text-white md:text-7xl lg:text-[84px]">
-              We don&apos;t translate culture. We{" "}
-              <span className="text-brand-yellow">are</span> it.
+              We don&apos;t guess the market. We{" "}
+              <span className="text-brand-yellow">measure</span> it.
             </h1>
             <p className="mt-8 max-w-2xl text-sm leading-relaxed text-neutral-500 md:text-base">
-              We build campaigns from inside the communities, campuses, creator
-              networks, and social moments that shape how young audiences
-              discover, trust, and talk about brands.
+              We build campaigns from audience research, digital channels,
+              content systems, and performance loops that shape how customers
+              discover, trust, and choose brands.
             </p>
           </motion.div>
 
@@ -75,10 +75,10 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.12, ease: "easeOut" }}
           >
             <p className="text-[10px] uppercase tracking-widest2 text-brand-yellow">
-              CULTURE OPERATING SYSTEM
+              GROWTH OPERATING SYSTEM
             </p>
             <p className="mt-5 text-sm leading-7 text-neutral-500">
-              Strategy, creators, city fluency, and reporting designed as one
+              Strategy, content, channel planning, and reporting designed as one
               connected engine, not a campaign checklist.
             </p>
           </motion.aside>

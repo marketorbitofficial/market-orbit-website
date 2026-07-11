@@ -1,21 +1,16 @@
-"use client";
+import { Metadata } from "next";
+import WhyClient from "./WhyClient";
 
-import CTA from "../../components/CTA";
-import Differentiator from "../../components/Differentiator";
-import FloatingCTA from "../../components/FloatingCTA";
-import Hero from "../../components/Hero";
-import QuoteStrip from "../../components/QuoteStrip";
-import Ticker from "../../components/Ticker";
+export const metadata: Metadata = {
+  title: "Why Market Orbit | Growth Marketing Agency",
+  description: "Discover what makes Market Orbit different and why we are the right choice for your brand's growth journey.",
+  openGraph: {
+    title: "Why Market Orbit | Growth Marketing Agency",
+    description: "Discover what makes Market Orbit different and why we are the right choice for your brand's growth journey.",
+    url: "https://marketorbit.in/why-market-orbit",
+  }
+};
 
-export default function WhyMarketOrbitPage() {
-  return (
-    <main className="min-h-screen bg-brand-black pt-[62px] text-[#f5f5f5]">
-      <Hero />
-      <Ticker />
-      <Differentiator />
-      <QuoteStrip />
-      <CTA />
-      <FloatingCTA />
-    </main>
-  );
+export default function WhyPage() {
+  return <WhyClient />;
 }

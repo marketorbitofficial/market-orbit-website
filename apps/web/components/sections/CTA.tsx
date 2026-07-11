@@ -12,17 +12,17 @@ interface CTAProps {
 
 export default function CTA({
   title = "Want to be part of this Orbit?",
-  subtitle = "We are always scaling our network of creators, campaign leads, and campus ambassadors. Drop us a line and let's explore opportunities.",
+  subtitle = "We are always scaling our network of strategists, campaign leads, and brand partners. Drop us a line and let's explore opportunities.",
   primaryBtnText = "Join the team",
-  primaryBtnHref = "#contact",
+  primaryBtnHref = "/careers",
   secondaryBtnText = "Talk directly",
-  secondaryBtnHref = "tel:+919876543210",
+  secondaryBtnHref = "tel:+9185443 20267",
 }: CTAProps) {
   return (
     <section className="py-24 px-6 md:px-12 border-t border-zinc-900 bg-zinc-950/10 relative overflow-hidden">
       {/* Background glow shadow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-44 bg-lime-orbit/5 rounded-full blur-[100px] pointer-events-none" />
-      
+
       <div className="max-w-4xl mx-auto text-center z-10 flex flex-col items-center gap-8">
         <h2 className="text-3xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none">
           {title.split(" ").map((word, i) => {

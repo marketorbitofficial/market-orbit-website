@@ -4,39 +4,39 @@ import { useState } from "react";
 
 const offers = [
   {
-    title: "Campus Activation",
+    title: "Digital Campaigns",
     description:
-      "We deploy brand experiences directly on college campuses — from stalls and sampling booths to flash mobs and co-branded events. Every activation is designed to feel organic, not sponsored.",
+      "We launch coordinated brand campaigns across digital channels, content formats, and high-intent audience segments. Every campaign is designed to feel relevant, not generic.",
   },
   {
-    title: "Student Ambassador Programs",
+    title: "Brand Partnership Programs",
     description:
-      "We recruit, train and manage student brand ambassadors across 500+ college touchpoints in 12 cities. Ambassadors drive peer-to-peer word of mouth that paid media simply can't replicate.",
+      "We recruit, train and manage brand partners across 500+ campaign touchpoints in 12 cities. Partners drive trusted word of mouth that paid media alone can't replicate.",
   },
   {
-    title: "Creator & Influencer Campaigns",
+    title: "Content & Social Campaigns",
     description:
-      "We connect brands with micro and mid-tier creators who have genuine Gen Z audiences. No vanity metrics — we select creators based on engagement quality, cultural fit, and campus reach.",
+      "We connect brands with the right content formats, channel mix, and distribution strategy. No vanity metrics — we optimize for engagement quality, market fit, and conversion potential.",
   },
   {
-    title: "Meme Marketing",
+    title: "Performance Marketing",
     description:
-      "We create platform-native meme content that spreads organically across WhatsApp, Instagram and X. Our meme team understands what actually lands with Indian college students versus what feels corporate.",
+      "We create performance-led campaigns that move across search, social, and retargeting channels. Our team focuses on what drives qualified attention instead of what only looks busy.",
   },
   {
-    title: "Youth Research",
+    title: "Market Research",
     description:
-      "Before we activate, we listen. Our youth research includes campus surveys, focus groups, trend audits and social listening to ensure your brand message is culturally accurate before it goes live.",
+      "Before we activate, we listen. Our market research includes audience surveys, focus groups, trend audits and social listening to ensure your brand message is accurate before it goes live.",
   },
   {
     title: "Brand Launch Playbooks",
     description:
-      "Launching a new product or entering a new market? We build complete youth-market entry playbooks covering positioning, channel strategy, influencer mapping, and activation sequencing.",
+      "Launching a new product or entering a new market? We build complete market-entry playbooks covering positioning, channel strategy, content mapping, and activation sequencing.",
   },
   {
     title: "Community-Led Growth",
     description:
-      "We build brand communities on Discord, WhatsApp and Instagram that keep Gen Z engaged beyond a single campaign — turning one-time buyers into long-term brand advocates.",
+      "We build brand communities across owned and social channels that keep customers engaged beyond a single campaign — turning one-time buyers into long-term advocates.",
   },
   {
     title: "Social Content Systems",
