@@ -12,14 +12,14 @@ const testimonials = [
   {
     badge: "Client",
     quote:
-      "The content strategy alone drove 3x our usual engagement. These guys actually understand customers — not just talk about funnels.",
-    attribution: "— Brand Lead, Product Launch",
+      "Their meme strategy and campus campaigns across Delhi, Chandigarh, and Jaipur drove 3× our usual engagement. These guys actually understand Gen Z in India.",
+    attribution: "— Head of Growth, Phool",
   },
   {
     badge: "Client",
     quote:
-      "We briefed them on a Monday. By Friday we had a fully mapped campaign plan and content rollout. Unreal speed.",
-    attribution: "— Founder, D2C Brand",
+      "As a niche wellness brand from the hills, reaching Gen-Z urban consumers in Delhi-NCR felt challenging. Market Orbit gave us a fully mapped campus activation plan in days. Unreal speed.",
+    attribution: "— Co-Founder, Pahadi Local",
   },
 ];
 
