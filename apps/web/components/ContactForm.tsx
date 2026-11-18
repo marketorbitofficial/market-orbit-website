@@ -4,10 +4,12 @@ import { useState } from "react";
 
 const SERVICE_OPTIONS = [
   "Content Marketing",
-  "Brand Strategy",
-  "Digital Campaigns",
+  "Influencer Marketing",
+  "PR & Personal Branding",
+  "Government Marketing",
+  "Social Media Marketing",
   "Performance Marketing",
-  "Social Media Management",
+  "Brand Strategy",
   "Brand Partnerships",
   "Other",
 ];

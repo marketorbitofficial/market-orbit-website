@@ -12,7 +12,7 @@ export const metadata = {
 const stats = [
   { value: "50+", label: "Brands Partnered" },
   { value: "3",   label: "Countries" },
-  { value: "4",   label: "Service Verticals" },
+  { value: "5",   label: "Service Verticals" },
   { value: "100%", label: "Client Retention" },
 ];
 

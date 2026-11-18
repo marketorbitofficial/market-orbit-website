@@ -45,10 +45,10 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 text-sm">
             {[
               "Content Marketing",
-              "Performance Marketing",
-              "Digital Campaigns",
-              "Social Media Management",
-              "Brand Strategy & Design",
+              "Influencer Marketing",
+              "PR & Personal Branding",
+              "Government Marketing",
+              "Social Media Marketing",
             ].map((service) => (
               <li key={service}>
                 <Link
