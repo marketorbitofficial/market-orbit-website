@@ -163,12 +163,14 @@ export default function Hero() {
           className="hero-animate mx-auto mt-4 flex flex-col items-center gap-3 sm:flex-row sm:gap-6"
           style={{ animationDelay: "0.8s" }}
         >
-          <Link
-            href="/contact"
+          <a
+            href="https://forms.gle/xBz18aXZnEYxGR6R6"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex w-full items-center justify-center bg-lime-orbit px-6 py-3.5 text-xs font-black uppercase tracking-widest text-black transition-all duration-300 hover:bg-white hover:shadow-[0_0_30px_rgba(191,255,0,0.45)] sm:w-auto"
           >
             Book a free call
-          </Link>
+          </a>
           <Link
             href="/services"
             className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-zinc-400 transition-colors duration-300 hover:text-white"

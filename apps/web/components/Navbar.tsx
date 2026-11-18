@@ -33,7 +33,9 @@ export default function Navbar() {
           ))}
         </div>
         <a
-          href="/contact"
+          href="https://forms.gle/xBz18aXZnEYxGR6R6"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden shrink-0 bg-brand-yellow px-5 py-[11px] text-[11px] font-bold uppercase tracking-[0.1em] text-brand-black transition duration-300 hover:shadow-[0_0_28px_rgba(194,255,0,.14)] lg:inline-flex"
         >
           Book a Call

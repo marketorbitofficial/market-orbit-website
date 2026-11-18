@@ -11,9 +11,14 @@ export default function PreferToTalkDirectly() {
           Prefer to talk directly?
         </h2>
 
-        <button className="bg-[#C6FF00] text-black px-10 py-4 text-xs tracking-[0.25em] uppercase font-semibold hover:bg-white transition">
+        <a
+          href="https://forms.gle/xBz18aXZnEYxGR6R6"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-[#C6FF00] text-black px-10 py-4 text-xs tracking-[0.25em] uppercase font-semibold hover:bg-white transition"
+        >
           Schedule A Call →
-        </button>
+        </a>
 
         <p className="text-white/35 text-sm mt-8">
           30-minute intro call. No commitment required.

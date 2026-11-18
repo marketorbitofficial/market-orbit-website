@@ -71,12 +71,14 @@ export default function Navbar() {
 
         {/* Action Button */}
         <div className="hidden xl:block">
-          <Link
-            href="/contact"
+          <a
+            href="https://forms.gle/xBz18aXZnEYxGR6R6"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-5 py-2.5 bg-lime-orbit text-black font-black text-xs uppercase tracking-widest hover:bg-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(191,255,0,0.35)]"
           >
             Book a call
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Hamburger Menu Toggle */}
@@ -131,13 +133,15 @@ export default function Navbar() {
           })}
           
           <div className="w-full flex flex-col gap-4 mt-6 items-center">
-            <Link
-              href="/contact"
+            <a
+              href="https://forms.gle/xBz18aXZnEYxGR6R6"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full max-w-xs px-8 py-4 bg-lime-orbit text-black font-black uppercase tracking-wider hover:bg-white transition-all duration-300"
             >
               Book a call
-            </Link>
+            </a>
           </div>
         </div>
       </div>
