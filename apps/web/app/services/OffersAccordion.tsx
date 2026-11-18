@@ -43,6 +43,11 @@ const offers = [
     description:
       "We design repeatable content systems for brands — content calendars, template libraries, posting frameworks — so your social presence stays consistent, on-trend and low-effort to maintain.",
   },
+  {
+    title: "Influencer Marketing",
+    description:
+      "We source, vet and manage influencer partnerships that go beyond follower counts — matching your brand with creators whose audience trust and content style genuinely fit. From nano to macro, every collaboration is briefed, tracked and reported for real ROI.",
+  },
 ];
 
 // Matches the ArrowMark component from page.tsx

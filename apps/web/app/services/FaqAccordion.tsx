@@ -28,6 +28,11 @@ const faqs = [
     answer:
       "A standard campaign runs 4 to 6 weeks from brief to results report. Rush activations can be turned around in 10 days. Ongoing retainer programs run on monthly cycles.",
   },
+  {
+    question: "Do you offer influencer marketing services?",
+    answer:
+      "Yes. We identify and manage influencer partnerships across Instagram, YouTube, and other platforms — from nano-influencers who drive niche community trust to macro voices that generate mass awareness. Every campaign is briefed, tracked, and reported with clear performance metrics.",
+  },
 ];
 
 export default function FaqAccordion() {

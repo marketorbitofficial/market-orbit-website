@@ -57,6 +57,18 @@ const services = [
     ],
     process: ["01 Strategy", "02 Creation", "03 Optimization"],
   },
+  {
+    title: "Influencer Marketing",
+    status: "Explore",
+    description:
+      "We identify, brief and manage creators who genuinely align with your brand — from nano-influencers driving niche trust to macro voices that build mass awareness. Every collaboration is performance-tracked from brief to result.",
+    deliverables: [
+      "Influencer Identification & Vetting",
+      "Campaign Brief & Creative Direction",
+      "Performance Reporting",
+    ],
+    process: ["01 Discovery", "02 Activation", "03 Measurement"],
+  },
 ];
 
 
@@ -75,6 +87,7 @@ const tickerItems = [
   "12 Cities Active",
   "Brand Strategy",
   "Market Research",
+  "Influencer Marketing",
 ];
 
 const fadeUp = {
@@ -374,12 +387,6 @@ export default function ServicesPage() {
                                   </ul>
                                 </div>
                               </div>
-                              <a
-                                href="#overview"
-                                className="mt-6 inline-flex font-serif text-xs uppercase leading-4 tracking-[1.2px] text-[#C8FF00]"
-                              >
-                                View Full Service -&gt;
-                              </a>
                             </div>
                           </motion.div>
                         )}
